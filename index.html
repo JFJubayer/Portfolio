@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jubaer Fahad | Embedded Systems & Aerospace Avionics Engineer</title>
+  <meta name="description" content="Portfolio of Jubaer Fahad - Embedded Systems & Aerospace Avionics Engineer, FPGA Developer, and ROS 2 enthusiast. Competitor at TU Graz RISC-V challenge, Andes Hackathon winner, and tech innovator.">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Link Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- STYLED HEADER / NAVIGATION -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#hero" class="logo">Jubaer <span>Fahad</span></a>
+      
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#academic" class="nav-link">Academic</a>
+        <a href="#cv" class="nav-link">Resume</a>
+        <a href="#roadmap" class="nav-link">Roadmap</a>
+        <a href="#blog" class="nav-link">Blog</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+        <a href="#cv" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem; font-family: var(--font-heading);">CV <i class="fa-solid fa-download"></i></a>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="burger" aria-label="Toggle Navigation menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+    </div>
+
+    <!-- Scrolling Human Status Ticker -->
+    <div class="hud-ticker">
+      <div class="ticker-wrap">
+        <div class="ticker-scroll">
+          <div class="ticker-item"><i class="fa-solid fa-graduation-cap"></i> Mymensingh Engineering College Student</div>
+          <div class="ticker-item"><i class="fa-solid fa-microchip"></i> FPGA & Embedded Systems Developer</div>
+          <div class="ticker-item"><i class="fa-solid fa-earth-americas"></i> Avid Traveler & Explorer</div>
+          <div class="ticker-item"><i class="fa-solid fa-award"></i> Andes Hackathon Winner</div>
+          <div class="ticker-item"><i class="fa-solid fa-users"></i> BRAC Amar Notun Network Leader</div>
+          <!-- Duplicate for infinite marquee loop -->
+          <div class="ticker-item"><i class="fa-solid fa-graduation-cap"></i> Mymensingh Engineering College Student</div>
+          <div class="ticker-item"><i class="fa-solid fa-microchip"></i> FPGA & Embedded Systems Developer</div>
+          <div class="ticker-item"><i class="fa-solid fa-earth-americas"></i> Avid Traveler & Explorer</div>
+          <div class="ticker-item"><i class="fa-solid fa-award"></i> Andes Hackathon Winner</div>
+          <div class="ticker-item"><i class="fa-solid fa-users"></i> BRAC Amar Notun Network Leader</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" class="nav-link mobile-nav-link">About</a>
+    <a href="#skills" class="nav-link mobile-nav-link">Skills</a>
+    <a href="#projects" class="nav-link mobile-nav-link">Projects</a>
+    <a href="#achievements" class="nav-link mobile-nav-link">Achievements</a>
+    <a href="#academic" class="nav-link mobile-nav-link">Academic</a>
+    <a href="#cv" class="nav-link mobile-nav-link">Resume</a>
+    <a href="#roadmap" class="nav-link mobile-nav-link">Roadmap</a>
+    <a href="#blog" class="nav-link mobile-nav-link">Blog</a>
+    <a href="#contact" class="nav-link mobile-nav-link">Contact</a>
+    <button id="themeToggleMobile" class="theme-toggle-btn mobile-theme-btn" style="margin-top: 1rem;" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i> Toggle Theme</button>
+    <a href="#cv" class="btn btn-primary mobile-nav-link" style="padding: 0.75rem 1.75rem; margin-top: 1rem;">Download CV</a>
+  </div>
+
+  <!-- FLOATING ACTION BUTTON FOR CV DOWNLOAD -->
+  <button class="fab-cv" id="fabCv" onclick="window.location.hash='#cv'" aria-label="Go to Resume section">
+    <i class="fa-solid fa-file-invoice"></i>
+    <span class="fab-tooltip">View & Download CV</span>
+  </button>
+
+  <!-- 1. HERO SECTION -->
+  <section id="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="container hero-container">
+      <div class="hero-content reveal">
+        <span class="hero-tag">Welcome to my space</span>
+        <h1 class="hero-title">Jubaer Fahad<span>Embedded Systems & RTL Hardware Developer</span></h1>
+        
+        <!-- Typewriter Container -->
+        <div class="typewriter-wrapper">
+          <span class="typewriter-text" id="typewriter"></span>
+        </div>
+
+        <p class="hero-tagline">"A calm brain can do anything."</p>
+        
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Let's Connect <i class="fa-solid fa-paper-plane"></i></a>
+          <a href="#cv" class="btn btn-secondary">Get Resume <i class="fa-solid fa-download"></i></a>
+        </div>
+
+        <div class="hero-socials">
+          <a href="https://github.com/JFJubayer" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub Profile">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/jubaer-fahad-0aabab33a" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="mailto:jubayerjf28@gmail.com" class="social-icon" aria-label="Send Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Clean Profile Photo spotlight -->
+      <div class="hero-avatar reveal reveal-delay-2">
+        <div class="avatar-wrapper">
+          <div class="avatar-inner">
+            <img src="profile-photo.jpg" alt="Jubaer Fahad Profile Photo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ABOUT ME SECTION -->
+  <section id="about">
+    <div class="container grid-2">
+      <div class="about-visual reveal">
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+          <div class="about-image-frame" id="aboutFrame">
+            <div class="about-img-container">
+              <img src="profile-photo.jpg" alt="Jubaer Fahad Portrait">
+            </div>
+            <!-- Digital HUD Overlay Lines -->
+            <div class="hud-overlay">
+              <div class="hud-bracket hud-tl"></div>
+              <div class="hud-bracket hud-tr"></div>
+              <div class="hud-bracket hud-bl"></div>
+              <div class="hud-bracket hud-br"></div>
+              <div class="hud-reticle"></div>
+              <div class="hud-status"><i class="fa-solid fa-circle-nodes"></i> TARGET: JF_JUBAYER</div>
+            </div>
+          </div>
+          
+          <!-- Personal Specs HUD Panel -->
+          <div class="about-specs-hud">
+            <div class="hud-header">
+              <span class="hud-title" style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--color-bronze);"><i class="fa-solid fa-terminal"></i> SYSTEM_SPEC_V2.0</span>
+            </div>
+            <div class="hud-specs-list">
+              <div class="hud-spec-item">
+                <span class="spec-label">CODENAME:</span>
+                <span class="spec-value">JUBAER_FAHAD</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">ACADEMIC_CORE:</span>
+                <span class="spec-value">B.Sc. @ MEC (CGPA 3.7)</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">ACTIVE_MODULE:</span>
+                <span class="spec-value">HADES_V CHALLENGE</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">NEXT_TARGET:</span>
+                <span class="spec-value">NOKIA FPGA 2026</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">CALM_BRAIN_REG:</span>
+                <span class="spec-value green-text" style="color: var(--color-green);">STABLE (100% clock)</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">LATITUDE:</span>
+                <span class="spec-value">24.7471° N (Mymensingh)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content reveal reveal-delay-2">
+        <h2 class="section-title">About Me</h2>
+        
+        <!-- About Section Tabs -->
+        <div class="about-tabs">
+          <button class="about-tab-btn active" data-about="bio"><i class="fa-solid fa-user"></i> Biography</button>
+          <button class="about-tab-btn" data-about="hardware"><i class="fa-solid fa-microchip"></i> Hardware Arsenal</button>
+          <button class="about-tab-btn" data-about="life"><i class="fa-solid fa-earth-americas"></i> Life Logs</button>
+        </div>
+
+        <!-- Tab 1: Biography -->
+        <div class="about-tab-pane active" id="about-pane-bio">
+          <div class="about-bio">
+            <p>I am a highly curious, self-taught, and self-driven engineering student pursuing my B.Sc. in Engineering at <strong>Mymensingh Engineering College</strong> (currently in 2nd Year, 2nd Semester). My fascination lies at the intersection of embedded systems, digital logic design on FPGA, aerospace avionics, and low-level software engineering.</p>
+            <p>I love taking on difficult projects that push my analytical limits—such as design modeling a custom RISC-V pipelined microcontroller from scratch, or tuning real-time PID controllers. I am also proud to be a member of BRAC's <strong>Amar Notun Network</strong> project, working to drive positive social change through collaboration.</p>
+          </div>
+        </div>
+
+        <!-- Tab 2: Hardware Arsenal -->
+        <div class="about-tab-pane" id="about-pane-hardware">
+          <div class="about-bio">
+            <p>My playground consists of hardware description languages, synthesizers, and embedded boards. I build custom soft processor cores and integrate sensor modules with real-time feedback loops.</p>
+            <div class="hardware-grid">
+              <div class="hard-item"><i class="fa-solid fa-circle-check"></i> <strong>FPGA Platforms:</strong> AMD Xilinx Basys 3, Vivado, Verilator, GTKWave</div>
+              <div class="hard-item"><i class="fa-solid fa-circle-check"></i> <strong>Processor RTL:</strong> Pipelined RV32I RISC-V core modelling (SystemVerilog)</div>
+              <div class="hard-item"><i class="fa-solid fa-circle-check"></i> <strong>Microcontrollers:</strong> STM32, Arduino, ESP32 (C/C++ firmware)</div>
+              <div class="hard-item"><i class="fa-solid fa-circle-check"></i> <strong>Robotics Core:</strong> ROS 2, Gazebo simulation environments, serial buses (SPI, UART)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Life Logs -->
+        <div class="about-tab-pane" id="about-pane-life">
+          <div class="about-bio">
+            <p>When my laptop lid is closed, I live in physical space: exploring nature, learning from local communities, and playing sports.</p>
+            <div class="hardware-grid">
+              <div class="hard-item"><i class="fa-solid fa-compass"></i> <strong>Avid Traveler:</strong> Backpacking across regions, discovering unique cultures, and exploring Bangladesh.</div>
+              <div class="hard-item"><i class="fa-solid fa-football"></i> <strong>Footballer:</strong> Playing central midfield, focusing on tactical play, stamina, and team spirit.</div>
+              <div class="hard-item"><i class="fa-solid fa-handshake-angle"></i> <strong>Social Action:</strong> Planning youth empowerment and local civic programs via BRAC's Amar Notun Network.</div>
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="about-quote">
+          "A calm brain can do anything."
+        </blockquote>
+
+        <div class="about-badges">
+          <span class="badge badge-cyan"><i class="fa-solid fa-brain"></i> Curious Problem Solver</span>
+          <span class="badge badge-coral"><i class="fa-solid fa-bolt"></i> Self-Taught & Driven</span>
+          <span class="badge badge-gold"><i class="fa-solid fa-earth-americas"></i> Explorer & Traveler</span>
+          <span class="badge badge-cyan"><i class="fa-solid fa-users"></i> People Person</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SKILLS & NARRATIVE TABS SECTION -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title reveal">My Expertise & Narrative</h2>
+      
+      <div class="skills-split-layout">
+        <!-- Left: Skills cards -->
+        <div class="skills-cards-column reveal">
+          <div class="grid-2-skills">
+            
+            <!-- Core Skills Card -->
+            <div class="skill-card hud-panel">
+              <div class="skill-card-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h3>Core Competencies</h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">FPGA / Verilog / VHDL</span>
+                    <span class="skill-level-text">Intermediate-Advanced</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Embedded Systems Hardware</span>
+                    <span class="skill-level-text">Advanced</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="88%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">C++ (RTL & Control Modeling)</span>
+                    <span class="skill-level-text">Advanced</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">ROS 2 & Gazebo Simulator</span>
+                    <span class="skill-level-text">Intermediate</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Secondary Skills Card -->
+            <div class="skill-card hud-panel">
+              <div class="skill-card-icon"><i class="fa-solid fa-code"></i></div>
+              <h3>Secondary Skills</h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">SystemVerilog (Hardware Verification)</span>
+                    <span class="skill-level-text">Intermediate</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">PID Control Tuning</span>
+                    <span class="skill-level-text">Advanced</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Python (OpenCV & Machine Learning)</span>
+                    <span class="skill-level-text">Intermediate-Advanced</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Flutter / Dart (App Dev)</span>
+                    <span class="skill-level-text">Intermediate</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="78%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Engineering Tools Card -->
+            <div class="skill-card hud-panel">
+              <div class="skill-card-icon"><i class="fa-solid fa-toolbox"></i></div>
+              <h3>Engineering Tools</h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">AMD Vivado (Design Suite)</span>
+                    <span class="skill-level-text">Intermediate-Advanced</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="82%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Verilator (HDL Simulator)</span>
+                    <span class="skill-level-text">Intermediate</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">GTKWave (Waveform Viewer)</span>
+                    <span class="skill-level-text">Intermediate-Advanced</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Tesseract OCR & Image Engines</span>
+                    <span class="skill-level-text">Intermediate</span>
+                  </div>
+                  <div class="skill-bar"><div class="skill-progress" data-width="72%"></div></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: HDL Waveform Simulator -->
+        <div class="skills-simulator-column reveal reveal-delay-2">
+          <div class="hud-panel simulator-panel">
+            <div class="panel-header-story">
+              <span class="panel-title-story"><i class="fa-solid fa-gauge-high"></i> Live RTL <span>Waveform Simulator</span></span>
+              <p style="color: var(--text-muted); font-size: 0.88rem;">Simulate real hardware signal wave streams directly on the logic grid below.</p>
+            </div>
+            
+            <div class="sim-tabs">
+              <button class="sim-tab-btn active" data-sim="counter"><i class="fa-solid fa-microchip" style="margin-right: 0.4rem;"></i> Hades-V Counter</button>
+              <button class="sim-tab-btn" data-sim="spi"><i class="fa-solid fa-circle-nodes" style="margin-right: 0.4rem;"></i> SPI Transceiver</button>
+              <button class="sim-tab-btn" data-sim="alu"><i class="fa-solid fa-calculator" style="margin-right: 0.4rem;"></i> ALU Adder Logic</button>
+            </div>
+
+            <!-- Code display block -->
+            <div class="sim-code-wrapper">
+              <pre><code id="sim-code">// Loading RTL logic module...</code></pre>
+            </div>
+
+            <!-- Waveform Canvas Display -->
+            <div class="waveform-screen">
+              <canvas id="waveform-canvas"></canvas>
+            </div>
+
+            <!-- Simulator Controls -->
+            <div class="sim-controls">
+              <button id="btn-run-sim" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.82rem; font-family: var(--font-heading);">
+                <i class="fa-solid fa-play"></i> RUN SIMULATION
+              </button>
+              <div class="sim-status-led">
+                <span class="led-dot active" id="sim-led"></span>
+                <span class="led-text" id="sim-status-text">SYS_STANDBY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PROJECTS SECTION -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title reveal">Featured Engineering Projects</h2>
+      <div class="projects-grid">
+        
+        <!-- Project A: Hades-V -->
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-img-wrapper">
+            <span class="project-status ongoing">Ongoing</span>
+            <canvas id="project-canvas-hades" class="project-mini-canvas"></canvas>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">HaDes-V Microcontroller</h3>
+            <p class="project-desc">A pipelined 32-bit RISC-V Microcontroller developed for the RISC-V International Challenge (TU Graz). Designed in SystemVerilog, optimized for FPGAs, and tested using Verilator simulation framework.</p>
+            <div class="project-tags">
+              <span class="badge badge-cyan">SystemVerilog</span>
+              <span class="badge badge-coral">FPGA</span>
+              <span class="badge badge-gold">RISC-V</span>
+              <span class="badge">Verilator</span>
+            </div>
+            <a href="https://github.com/JFJubayer" target="_blank" rel="noopener noreferrer" class="project-link">
+              View Repository <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project B: Autonomous Line Follower -->
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-img-wrapper">
+            <span class="project-status">Completed</span>
+            <canvas id="project-canvas-robot" class="project-mini-canvas"></canvas>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Autonomous Line-Following Robot</h3>
+            <p class="project-desc">A high-speed autonomous mobile robot powered by an embedded microcontroller. Uses custom IR sensor arrays and a fine-tuned PID control algorithm to achieve smooth path tracking and quick curve navigation.</p>
+            <div class="project-tags">
+              <span class="badge badge-cyan">C/C++</span>
+              <span class="badge badge-coral">PID Control</span>
+              <span class="badge badge-gold">Microcontroller</span>
+              <span class="badge">Robotics</span>
+            </div>
+            <a href="https://github.com/JFJubayer" target="_blank" rel="noopener noreferrer" class="project-link">
+              View Repository <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project C: Facial Expression Recog -->
+        <div class="project-card reveal reveal-delay-3">
+          <div class="project-img-wrapper">
+            <span class="project-status">Completed</span>
+            <canvas id="project-canvas-face" class="project-mini-canvas"></canvas>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Facial Expression Recognition</h3>
+            <p class="project-desc">Real-time computer vision system that classifies human facial emotions. Developed with Python, OpenCV, and DeepFace, storing session logs to analyze cognitive state distribution over time.</p>
+            <div class="project-tags">
+              <span class="badge badge-cyan">Python</span>
+              <span class="badge badge-coral">OpenCV</span>
+              <span class="badge badge-gold">DeepFace</span>
+              <span class="badge">Machine Learning</span>
+            </div>
+            <a href="https://github.com/JFJubayer" target="_blank" rel="noopener noreferrer" class="project-link">
+              View Repository <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project D: Quotex Trading Bot -->
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-img-wrapper">
+            <span class="project-status">Completed</span>
+            <canvas id="project-canvas-trading" class="project-mini-canvas"></canvas>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Quotex Martingale Trading Bot</h3>
+            <p class="project-desc">An algorithmic trading companion application that uses OCR (Tesseract) to capture and interpret active interface parameters in real-time. Executes martingale trade patterns via simulated GUI inputs.</p>
+            <div class="project-tags">
+              <span class="badge badge-cyan">Python</span>
+              <span class="badge badge-coral">Tesseract OCR</span>
+              <span class="badge badge-gold">GUI Automation</span>
+              <span class="badge">Trading Bot</span>
+            </div>
+            <a href="https://github.com/JFJubayer" target="_blank" rel="noopener noreferrer" class="project-link">
+              View Repository <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project E: Smart Health App -->
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-img-wrapper">
+            <span class="project-status">Completed</span>
+            <canvas id="project-canvas-health" class="project-mini-canvas"></canvas>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Smart Health & Nutrition Calculator</h3>
+            <p class="project-desc">A cross-platform mobile application that tracks user macronutrients, hydration levels, and calorie targets. Built with Flutter/Dart, deploying clean local database storage with SQLite.</p>
+            <div class="project-tags">
+              <span class="badge badge-cyan">Flutter</span>
+              <span class="badge badge-coral">Dart</span>
+              <span class="badge badge-gold">Mobile App</span>
+              <span class="badge">SQLite</span>
+            </div>
+            <a href="https://github.com/JFJubayer" target="_blank" rel="noopener noreferrer" class="project-link">
+              View Repository <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ACHIEVEMENTS SECTION -->
+  <section id="achievements">
+    <div class="container">
+      <h2 class="section-title reveal">Achievements & Memberships</h2>
+      <div class="timeline">
+        
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item timeline-item-left reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2025</span>
+            <h3>2nd Place — Andes Hackathon</h3>
+            <p>Won second place in the international Andes Hackathon. Collaborated in a team environment to design and deploy custom ACE (Andes Custom Extension) instructions inside a RISC-V soft processor core, accelerating heavy processing algorithms.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item timeline-item-right reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2024</span>
+            <h3>2nd Place — Campus Problem Solving</h3>
+            <p>Achieved second place in the annual Campus Problem Solving Competition at Mymensingh Engineering College. Excelled in algorithm optimization, string manipulation, and dynamic programming challenges in C++.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item timeline-item-left reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">Active</span>
+            <h3>Member — BRAC Amar Notun Network</h3>
+            <p>Selected as an active member of BRAC's prestigious Amar Notun Network project. Participating in civic leadership training and community development programs designed to drive youth empowerment across Bangladesh.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ACADEMIC SECTION -->
+  <section id="academic">
+    <div class="container">
+      <h2 class="section-title reveal">Academic Background</h2>
+      <div class="academic-grid">
+        <!-- Left Column: Academic Spec Registry HUD -->
+        <div class="academic-visual reveal">
+          <div class="about-image-frame" id="academicFrame" style="margin-bottom: 2rem;">
+            <!-- Custom Silicon Microchip -->
+            <div class="chip-container">
+              <div class="chip-silicon">
+                <!-- Chip Pins -->
+                <div class="chip-pins left-pins">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="chip-pins right-pins">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="chip-pins top-pins">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="chip-pins bottom-pins">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                
+                <!-- Inner Core -->
+                <div class="chip-core">
+                  <div class="chip-logo"><i class="fa-solid fa-microchip"></i></div>
+                  <div class="chip-title">JUBAER FAHAD</div>
+                  <div class="chip-subtitle">ACADEMIC CORE</div>
+                  <div class="chip-serial">REV_2.0_MEC</div>
+                  <div class="chip-led"></div>
+                </div>
+                
+                <!-- Circuit Traces Grid -->
+                <div class="chip-traces">
+                  <div class="trace t1"></div>
+                  <div class="trace t2"></div>
+                  <div class="trace t3"></div>
+                  <div class="trace t4"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Digital HUD Overlay Lines (Matching About Me section) -->
+            <div class="hud-overlay">
+              <div class="hud-bracket hud-tl"></div>
+              <div class="hud-bracket hud-tr"></div>
+              <div class="hud-bracket hud-bl"></div>
+              <div class="hud-bracket hud-br"></div>
+              <div class="hud-reticle"></div>
+              <div class="hud-status"><i class="fa-solid fa-microchip"></i> CORE: ACTIVE</div>
+            </div>
+          </div>
+
+          <div class="academic-specs-hud">
+            <div class="hud-header">
+              <span class="hud-title" style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--color-bronze);"><i class="fa-solid fa-terminal"></i> ACADEMIC_BIOS_REG</span>
+            </div>
+            <div class="hud-specs-list">
+              <div class="hud-spec-item">
+                <span class="spec-label">REG_ID:</span>
+                <span class="spec-value">MEC_B.Sc_EE</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">INSTITUTION:</span>
+                <span class="spec-value">Mymensingh Eng. College</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">AFFILIATION:</span>
+                <span class="spec-value">University of Dhaka</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">TERM_STATUS:</span>
+                <span class="spec-value">2nd Year, 2nd Semester</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">B.Sc._CGPA:</span>
+                <span class="spec-value" style="color: var(--color-bronze);">3.70 / 4.00</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">SSC_HSC_GPA:</span>
+                <span class="spec-value" style="color: var(--color-terracotta);">5.00 / 5.00</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">SYSTEM_CLOCK:</span>
+                <span class="spec-value">2022 – Present</span>
+              </div>
+              <div class="hud-spec-item">
+                <span class="spec-label">CORE_MODULES:</span>
+                <span class="spec-value green-text" style="color: var(--color-green);">ACTIVE (100% OK)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Academic Explorer Tabs -->
+        <div class="academic-content reveal reveal-delay-2">
+        
+        <!-- Academic Section Tabs -->
+        <div class="academic-tabs">
+          <button class="academic-tab-btn active" data-academic="bsc"><i class="fa-solid fa-graduation-cap"></i> B.Sc. Studies</button>
+          <button class="academic-tab-btn" data-academic="board"><i class="fa-solid fa-award"></i> SSC & HSC Board</button>
+          <button class="academic-tab-btn" data-academic="labs"><i class="fa-solid fa-flask"></i> RTL & Lab Work</button>
+        </div>
+
+        <!-- Tab 1: B.Sc. Studies -->
+        <div class="academic-tab-pane active" id="academic-pane-bsc">
+          <div class="academic-bio">
+            <p>I am pursuing my <strong>Bachelor of Science in Engineering</strong> at <strong>Mymensingh Engineering College</strong> (affiliated with the University of Dhaka). My studies focus on digital logic structures, microprocessor architectures, and algorithmic fundamentals.</p>
+            <p>Through systematic coursework, I maintain a strong theoretical base while actively translating lecture concepts into hardware implementations and algorithmic exercises.</p>
+            
+            <div class="academic-coursework" style="margin-top: 1.5rem;">
+              <h4 style="font-size: 1rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-book-open"></i> Key Coursework Completed:</h4>
+              <div class="coursework-chips">
+                <span class="badge">Digital Logic Design</span>
+                <span class="badge">Embedded Systems</span>
+                <span class="badge">Control Systems</span>
+                <span class="badge">Data Structures</span>
+                <span class="badge">Algorithms</span>
+                <span class="badge">Computer Architecture</span>
+                <span class="badge">Microprocessors & Assembly</span>
+                <span class="badge">Signal Processing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: SSC & HSC Board -->
+        <div class="academic-tab-pane" id="academic-pane-board">
+          <div class="academic-bio">
+            <p style="margin-bottom: 2rem;">A retrospective journey of Jubaer's academic migration between his home village in Pabna and the competitive classrooms of Dhaka, highlighting his resilience and milestones:</p>
+            
+            <div class="academic-steps">
+              <!-- Step 1 -->
+              <div class="academic-step-item">
+                <div class="step-node">01</div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <h4>Village Foundations</h4>
+                    <span class="badge badge-cyan"><i class="fa-solid fa-location-dot"></i> Pabna (Village)</span>
+                    <span class="badge badge-gold">Nursery – Class 4</span>
+                  </div>
+                  <p>Spent early childhood and initial schooling in his home village of Pabna, establishing primary learning and connection to family roots.</p>
+                </div>
+              </div>
+              
+              <!-- Step 2 -->
+              <div class="academic-step-item">
+                <div class="step-node">02</div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <h4>Primary Certification (PSC)</h4>
+                    <span class="badge badge-cyan"><i class="fa-solid fa-location-dot"></i> Dhaka</span>
+                    <span class="badge badge-gold"><i class="fa-solid fa-star"></i> GPA 5.00</span>
+                  </div>
+                  <p>Moved to Dhaka with his mother for advanced education. Successfully completed the primary level PSC exams with a perfect score.</p>
+                </div>
+              </div>
+              
+              <!-- Step 3 -->
+              <div class="academic-step-item">
+                <div class="step-node warning-node">03</div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <h4>Middle School & Village Return</h4>
+                    <span class="badge badge-cyan"><i class="fa-solid fa-location-dot"></i> Pabna (Village)</span>
+                    <span class="badge badge-coral"><i class="fa-solid fa-circle-exclamation"></i> JSC GPA 4.86</span>
+                  </div>
+                  <p>Returned to the village for classes 6 to 8. Scoring 4.86 in the JSC was a critical wake-up call, fueling a deep drive to push his academic limits and return to the capital.</p>
+                </div>
+              </div>
+              
+              <!-- Step 4 -->
+              <div class="academic-step-item">
+                <div class="step-node">04</div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <h4>Secondary School Certificate (SSC)</h4>
+                    <span class="badge badge-cyan"><i class="fa-solid fa-location-dot"></i> Dhaka (Mirpur)</span>
+                    <span class="badge badge-gold"><i class="fa-solid fa-star"></i> GPA 5.00</span>
+                  </div>
+                  <p>Moved back to Dhaka and completed his SSC from <strong>Haji Ashraf Ali High School</strong> (Mirpur, Shewrapara). Attained a perfect 5.00 GPA in the Science group.</p>
+                </div>
+              </div>
+              
+              <!-- Step 5 -->
+              <div class="academic-step-item">
+                <div class="step-node">05</div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <h4>Higher Secondary Certificate (HSC)</h4>
+                    <span class="badge badge-cyan"><i class="fa-solid fa-location-dot"></i> Dhaka</span>
+                    <span class="badge badge-gold"><i class="fa-solid fa-star"></i> GPA 5.00</span>
+                  </div>
+                  <p>Earned admission into the prestigious <strong>Govt. Science College</strong> in Dhaka, completing his HSC with a perfect GPA 5.00 in Science.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: RTL & Lab Work -->
+        <div class="academic-tab-pane" id="academic-pane-labs">
+          <div class="academic-bio">
+            <p>Applied laboratory coursework and self-directed experiments focusing on digital synthesis, microcontroller integration, and control loop engineering.</p>
+            <div class="hardware-grid">
+              <div class="hard-item"><i class="fa-solid fa-microchip"></i> <strong>RTL Logic Design & Simulation:</strong> Modeling hardware blocks, tracing signal states, and validating pipelines using Verilog, Verilator, and GTKWave.</div>
+              <div class="hard-item"><i class="fa-solid fa-gears"></i> <strong>Embedded Firmware Systems:</strong> Configuring registers, serial protocols (SPI, I2C, UART), and writing clean firmware for STM32 and ESP32 MCU boards.</div>
+              <div class="hard-item"><i class="fa-solid fa-circle-nodes"></i> <strong>Control & Robotics Lab:</strong> Implementing closed-loop feedback systems via PID algorithms, and simulating multi-node robotic systems under ROS 2.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- 7. CV / RESUME SECTION -->
+  <section id="cv">
+    <div class="container">
+      <h2 class="section-title reveal">Curriculum Vitae</h2>
+      <div class="cv-wrapper reveal">
+        <!-- Rendered CV Sheet -->
+        <div class="cv-paper">
+          <div class="cv-header">
+            <div class="cv-name-title">
+              <h2>Md. Jubaer Hossain Fahad</h2>
+              <p>Embedded Systems & RTL hardware Engineer | FPGA | VLSI | ROS 2</p>
+            </div>
+            <div class="cv-meta">
+              <div><i class="fa-solid fa-user" style="margin-right: 0.4rem;"></i> Age: 23 Years</div>
+              <div><i class="fa-solid fa-envelope" style="margin-right: 0.4rem;"></i> jubayerjf28@gmail.com</div>
+              <div><i class="fa-solid fa-phone" style="margin-right: 0.4rem;"></i> +8801830900746</div>
+              <div><i class="fa-solid fa-location-dot" style="margin-right: 0.4rem;"></i> Mymensingh, Bangladesh</div>
+              <div>
+                <a href="https://github.com/JFJubayer" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a> | 
+                <a href="https://linkedin.com/in/jubaer-fahad-0aabab33a" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-section">
+            <div class="cv-section-title">Summary</div>
+            <div class="cv-summary">
+              Curious and self-driven engineering student focusing on digital hardware design, FPGA logic modeling, VLSI layouts, and embedded architectures. Enthusiastic about creating highly reliable system pipelines. Active participant in global hackathons, challenge events, and community development frameworks, targeting a global research and engineering career abroad.
+            </div>
+          </div>
+
+          <div class="cv-grid">
+            <div>
+              <div class="cv-section">
+                <div class="cv-section-title">Education</div>
+                <div class="cv-item">
+                  <div class="cv-item-header">
+                    <span>B.Sc. in Engineering</span>
+                    <span>2022 – Present</span>
+                  </div>
+                  <div class="cv-item-sub">
+                    <span>Mymensingh Engineering College</span>
+                    <span>CGPA: 3.7 / 4.0</span>
+                  </div>
+                  <ul class="cv-item-bullets">
+                    <li>2nd Year, 2nd Semester student.</li>
+                    <li>Advanced coursework in Digital Logic Design, Embedded Systems, Computer Architecture, and Algorithms.</li>
+                  </ul>
+                </div>
+                <div class="cv-item" style="margin-top: -1rem;">
+                  <div class="cv-item-header">
+                    <span>HSC & SSC (Science)</span>
+                    <span>GPA 5.00 / 5.00</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cv-section">
+                <div class="cv-section-title">Technical Expertise</div>
+                <div class="cv-skills-category">
+                  <strong>Languages:</strong> Verilog, SystemVerilog, VHDL, C++, C, Python, Dart.
+                </div>
+                <div class="cv-skills-category">
+                  <strong>Hardware & Control:</strong> FPGAs, Microcontrollers, VLSI Layouts, PID Control, ROS 2, Gazebo Simulation.
+                </div>
+                <div class="cv-skills-category">
+                  <strong>EDA & Dev Tools:</strong> AMD Vivado, Verilator, GTKWave, Tesseract OCR, Flutter, Git.
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="cv-section">
+                <div class="cv-section-title">Selected Projects</div>
+                
+                <div class="cv-item">
+                  <div class="cv-item-header">
+                    <span>HaDes-V Microcontroller Core</span>
+                    <span>SystemVerilog, FPGA</span>
+                  </div>
+                  <ul class="cv-item-bullets">
+                    <li>Designing a pipelined 32-bit RISC-V processor architecture.</li>
+                    <li>Developed for the TU Graz RISC-V International Challenge.</li>
+                    <li>Integrated Verilator simulation framework for testing.</li>
+                  </ul>
+                </div>
+
+                <div class="cv-item">
+                  <div class="cv-item-header">
+                    <span>Autonomous Line-Follower Robot</span>
+                    <span>C++, PID</span>
+                  </div>
+                  <ul class="cv-item-bullets">
+                    <li>Developed a microcontroller-based robotics platform.</li>
+                    <li>Configured IR sensor array filtering and custom PID navigation loops.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="cv-section">
+                <div class="cv-section-title">Achievements & Activities</div>
+                <ul class="cv-item-bullets">
+                  <li><strong>2nd Place</strong> — Andes Hackathon 2025 (RISC-V ACE instruction design).</li>
+                  <li><strong>Hades-V Challenge 2026</strong> — Competitor (ongoing CPU design).</li>
+                  <li><strong>Member</strong> — BRAC Amar Notun Network civic action project.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-actions-bar">
+          <a href="mailto:jubayerjf28@gmail.com?subject=Requesting%20PDF%20CV%20-%20Md.%20Jubaer%20Hossain%20Fahad" class="btn btn-primary">
+            Request / Download CV (PDF) <i class="fa-solid fa-download"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. ROADMAP SECTION -->
+  <section id="roadmap">
+    <div class="container">
+      <h2 class="section-title reveal">Strategic Career Roadmap</h2>
+      <p class="roadmap-intro reveal">An interactive 3D Trajectory Tree outlining Jubaer's academic growth, target placements, and business backups. Drag to rotate the tree; hover over nodes to swap strategy details.</p>
+      
+      <!-- Interactive 3D Trajectory Board Grid -->
+      <div class="trajectory-board reveal">
+        <!-- 3D Canvas rendering window -->
+        <div class="tree-canvas-container">
+          <canvas id="tree-canvas"></canvas>
+        </div>
+
+        <!-- Trajectory details panels -->
+        <div class="trajectory-details">
+          <!-- Panel A: Scholarships -->
+          <div class="path-detail-pane active" id="path-pane-scholarship">
+            <h3>Nordic & Global Scholarships <span class="probability-badge">Success Probability: 70-80%</span></h3>
+            <p class="path-desc-text">Your hackathon wins and custom RISC-V RTL architecture work are major differentiators. This path focuses on obtaining fully funded Master of Science positions in high-value European hardware research hubs, offering a direct 3-5 year permanent residency pathway after graduation.</p>
+            
+            <div class="relevance-metrics">
+              <div class="relevance-label">
+                <span>Profile Compatibility Index</span>
+                <span>85%</span>
+              </div>
+              <div class="relevance-bar-wrap">
+                <div class="relevance-bar" data-relevance="85%"></div>
+              </div>
+            </div>
+
+            <div class="path-bullet-grid">
+              <div class="path-bullet-col">
+                <h5>Target Nordic Programs</h5>
+                <ul>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Sweden (SI Scholarship)</strong>: KTH Royal Institute of Technology — Embedded Systems</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Norway (Quota Scheme)</strong>: NTNU — FPGA & SoC Designs</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Finland (Finland Scholarship)</strong>: Aalto University — Computer Architecture</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Denmark (Govt Scholarship)</strong>: DTU — VLSI Design / Hardware</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Iceland (Univ Scholarship)</strong>: University of Iceland — Computing Systems</li>
+                </ul>
+              </div>
+              <div class="path-bullet-col" style="margin-top: 1rem;">
+                <h5>Global Scholarship Channels</h5>
+                <ul>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Erasmus Mundus Joint Masters</strong>: Focus on embedded microcontrollers, IoT, and cloud architectures</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Commonwealth Scholarships</strong>: Fully funded opportunities for UK Master programs</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Australia Awards</strong>: Fully funded opportunities in Australian hardware labs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel B: Military -->
+          <div class="path-detail-pane" id="path-pane-military">
+            <h3>Military Commissions Backup <span class="probability-badge" style="color: var(--color-bronze); border-color: rgba(217, 119, 6, 0.3); background: rgba(217, 119, 6, 0.04);">Success Probability: 70-80%</span></h3>
+            <p class="path-desc-text">Applying for graduate entry officer commissions. While this pathway offers strong starting pay, benefits, and leadership structure, it involves significant service commitments (10-20 years) which restrict options for immediate permanent relocation abroad. Recommended only as a secondary backup option.</p>
+            
+            <div class="relevance-metrics">
+              <div class="relevance-label">
+                <span>Profile Compatibility Index</span>
+                <span>50%</span>
+              </div>
+              <div class="relevance-bar-wrap">
+                <div class="relevance-bar" data-relevance="50%"></div>
+              </div>
+            </div>
+
+            <div class="path-bullet-grid">
+              <div class="path-bullet-col">
+                <h5>BMA Graduate Short Course</h5>
+                <ul>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Rank Commission</strong>: Direct Commissioned Captain rank</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Training</strong>: 9 months of intense training at Bangladesh Military Academy</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Starting Pay</strong>: ~৳85,000/month plus medical and housing benefits</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Commitment</strong>: 10+ years active service agreement</li>
+                </ul>
+              </div>
+              <div class="path-bullet-col" style="margin-top: 1rem;">
+                <h5>Junior Commissioned Officer (JCO)</h5>
+                <ul>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Rank</strong>: Junior Warrant Officer (JWO) / Havildar</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Training</strong>: 6-9 months initial training course</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Starting Pay</strong>: ~৳35,000 - ৳45,000/month</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Commitment</strong>: 15-20 years active service obligation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel C: FBA & Freelance -->
+          <div class="path-detail-pane" id="path-pane-business">
+            <h3>Amazon FBA & FPGA Freelancing <span class="probability-badge" style="color: var(--color-orange); border-color: rgba(194, 65, 12, 0.3); background: rgba(194, 65, 12, 0.04);">Success Probability: 50%</span></h3>
+            <p class="path-desc-text">A flexible, self-funded business and freelance path. You can start Amazon FBA from Bangladesh to generate high business cash flows, while utilizing Upwork/contract portals to consult on FPGA/RTL logic design. Highly flexible, serving as an entrepreneurial alternative to fund studies.</p>
+            
+            <div class="relevance-metrics">
+              <div class="relevance-label">
+                <span>Profile Compatibility Index</span>
+                <span>65%</span>
+              </div>
+              <div class="relevance-bar-wrap">
+                <div class="relevance-bar" data-relevance="65%"></div>
+              </div>
+            </div>
+
+            <div class="path-bullet-grid">
+              <div class="path-bullet-col">
+                <h5>Amazon FBA Setup</h5>
+                <ul>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Capital</strong>: Minimum $1,000 seed funds ($500 - $3,000 range recommended)</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Entity</strong>: Register US LLC, local agent, and Seller Central account</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Flows</strong>: High potential cash flow to support foreign education</li>
+                </ul>
+              </div>
+              <div class="path-bullet-col" style="margin-top: 1rem;">
+                <h5>FPGA Consulting</h5>
+                <ul>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Freelancing</strong>: Bid on Upwork RTL, Verilog, and hardware debugging jobs</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Portfolio</strong>: Link custom Andes hackathon instructions as proof of work</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Flexibility</strong>: Can be done in parallel with other path operations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive 2.5-Year Phase Checklist Board -->
+      <div class="roadmap-timeline">
+        
+        <!-- Phase 1 -->
+        <div class="roadmap-card hud-panel reveal">
+          <div class="roadmap-phase-info">
+            <span class="roadmap-phase-num">Phase 01</span>
+            <h3 class="roadmap-phase-title">Foundation & Prep</h3>
+            <span class="roadmap-phase-time">Now – 6 Months</span>
+          </div>
+          <div class="roadmap-details">
+            <div class="roadmap-goals-list">
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Complete Hades V CPU Challenge 2026 (target top-tier rankings).</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Prepare for Nokia FPGA Hackathon 2026 (successfully registered).</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Push custom Andes ACE RTL codes to GitHub portfolios.</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Kickstart IELTS preparation (target score: 7.0+).</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Optimize LinkedIn profile, highlighting Andes Hackathon 2nd place.</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Perform initial FBA product research and setup mapping.</span>
+              </label>
+            </div>
+            <p class="roadmap-strategy">Solidifying hardware credentials, optimizing portfolios, and starting language prep.</p>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="roadmap-card hud-panel reveal">
+          <div class="roadmap-phase-info">
+            <span class="roadmap-phase-num">Phase 02</span>
+            <h3 class="roadmap-phase-title">Profile Building</h3>
+            <span class="roadmap-phase-time">6 – 18 Months</span>
+          </div>
+          <div class="roadmap-details">
+            <div class="roadmap-goals-list">
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Sit for IELTS exam, achieving a target score of 7.0+ band.</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Submit peer-reviewed FPGA/VLSI research paper to IEEE/ICCE conference.</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Secure FPGA/embedded hardware internship (Daraz, Brainstation 23, or semiconductor firms).</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Launch Amazon FBA on a small scale to test product viability.</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Reach out and network with FPGA professors at KTH Sweden, NTNU Norway, and Aalto Finland.</span>
+              </label>
+            </div>
+            <p class="roadmap-strategy">Securing publications, starting internships, and building international academic connections.</p>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="roadmap-card hud-panel reveal">
+          <div class="roadmap-phase-info">
+            <span class="roadmap-phase-num">Phase 03</span>
+            <h3 class="roadmap-phase-title">Global Applications</h3>
+            <span class="roadmap-phase-time">18 – 30 Months</span>
+          </div>
+          <div class="roadmap-details">
+            <div class="roadmap-goals-list">
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Apply for Swedish Institute Scholarship (KTH Embedded Systems target).</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Apply for Norwegian Quota Scholarship (NTNU FPGA/SoC target).</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Apply for Finland Scholarship (Aalto Computer Architecture target).</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Apply for Erasmus Mundus Joint Masters embedded hardware programs.</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Apply for Commonwealth & Australia Awards Scholarship channels.</span>
+              </label>
+              <label class="goal-item">
+                <input type="checkbox">
+                <span>Deploy FBA business full-scale or seek freelancing RTL clients as backup.</span>
+              </label>
+            </div>
+            <p class="roadmap-strategy">Executing applications across all scholarship pathways with business setups as backups.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Target Countries Sub-panel -->
+      <div class="roadmap-destinations reveal">
+        <h3>Primary Target Countries</h3>
+        <p>Seeking academic research opportunities, professional placements, and industry collaborations in the following territories:</p>
+        <div class="dest-flags">
+          <span class="dest-flag-badge"><i class="fa-solid fa-map-location-dot"></i> Canada</span>
+          <span class="dest-flag-badge"><i class="fa-solid fa-map-location-dot"></i> Germany</span>
+          <span class="dest-flag-badge"><i class="fa-solid fa-map-location-dot"></i> Sweden</span>
+          <span class="dest-flag-badge"><i class="fa-solid fa-map-location-dot"></i> Norway</span>
+          <span class="dest-flag-badge"><i class="fa-solid fa-map-location-dot"></i> Finland</span>
+          <span class="dest-flag-badge"><i class="fa-solid fa-map-location-dot"></i> Australia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. BLOG SECTION -->
+  <section id="blog">
+    <div class="container">
+      <h2 class="section-title reveal">Technical Journal</h2>
+      <div class="grid-3">
+        
+        <!-- Blog post 1 -->
+        <div class="blog-card reveal reveal-delay-1">
+          <div class="blog-content">
+            <div class="blog-meta-info">
+              <span>Hardware Architecture</span>
+              <span>May 18, 2026</span>
+            </div>
+            <h3 class="blog-title">Why I'm Building a RISC-V CPU from Scratch</h3>
+            <p class="blog-excerpt">Developing the HaDes-V pipelined RV32I microcontroller core is an intense lesson in system timing, pipelining hazards, and memory control. This article documents compiling custom toolchains, simulating hazards using Verilator, and monitoring hardware signals in GTKWave.</p>
+            <div class="blog-readmore">
+              <a href="#contact" class="btn-text">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog post 2 -->
+        <div class="blog-card reveal reveal-delay-2">
+          <div class="blog-content">
+            <div class="blog-meta-info">
+              <span>Hackathon Chronicles</span>
+              <span>March 12, 2026</span>
+            </div>
+            <h3 class="blog-title">What I Learned at Andes Hackathon 2025</h3>
+            <p class="blog-excerpt">Winning 2nd place at the Andes Hackathon taught my team how to design hardware accelerators using the Andes Custom Extension (ACE) framework. I detail our approach to instruction extension design, toolchain configuration, and accelerating matrix mathematics inside the CPU pipeline under strict timelines.</p>
+            <div class="blog-readmore">
+              <a href="#contact" class="btn-text">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog post 3 -->
+        <div class="blog-card reveal reveal-delay-3">
+          <div class="blog-content">
+            <div class="blog-meta-info">
+              <span>Career Strategy</span>
+              <span>Jan 5, 2026</span>
+            </div>
+            <h3 class="blog-title">My Plan to Work in Europe as an Engineer</h3>
+            <p class="blog-excerpt">Navigating visa systems and entry requirements for Embedded/FPGA careers in Europe from Bangladesh requires a structured strategy. This article covers building remote-friendly portfolios, targeting high-demand European engineering hubs like Munich and Stockholm, and leveraging postgraduate opportunities.</p>
+            <div class="blog-readmore">
+              <a href="#contact" class="btn-text">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CONTACT SECTION -->
+  <section id="contact">
+    <div class="container contact-wrapper">
+      
+      <!-- Contact Info Panel -->
+      <div class="contact-info-panel reveal">
+        <h2 class="section-title" style="margin-bottom: 1.5rem;">Get in Touch</h2>
+        <p>Have an open opportunity, collaboration request, or technical question? Feel free to reach out via the form, or connect through social channels.</p>
+        
+        <div class="contact-methods">
+          <!-- Email -->
+          <div class="contact-method-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-details-text">
+              <span>Email</span>
+              <a href="mailto:jubayerjf28@gmail.com">jubayerjf28@gmail.com</a>
+            </div>
+          </div>
+          <!-- Phone -->
+          <div class="contact-method-item">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-details-text">
+              <span>Phone</span>
+              <a href="tel:+8801830900746">+880 1830-900746</a>
+            </div>
+          </div>
+          <!-- Location -->
+          <div class="contact-method-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-details-text">
+              <span>Location</span>
+              <a href="https://maps.google.com/?q=Mymensingh,Bangladesh" target="_blank" rel="noopener noreferrer">Mymensingh, Bangladesh</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form Panel -->
+      <div class="contact-form-panel reveal reveal-delay-2">
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="formName" class="form-input" placeholder=" " required>
+            <label for="formName" class="form-label">Full Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="formEmail" class="form-input" placeholder=" " required>
+            <label for="formEmail" class="form-label">Email Address</label>
+          </div>
+          <div class="form-group">
+            <textarea id="formMessage" class="form-input" placeholder=" " required></textarea>
+            <label for="formMessage" class="form-label">Your Message</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; font-family: var(--font-heading);">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+          
+          <div class="form-status" id="formStatus"></div>
+
+          <!-- Terminal logs window -->
+          <div class="terminal-logs-container" id="terminalLogs" style="display: none; margin-top: 1.5rem;">
+            <div class="terminal-logs-header">
+              <div class="term-dot-wrap">
+                <span class="term-dot green"></span>
+                <span class="term-dot yellow"></span>
+                <span class="term-dot red"></span>
+              </div>
+              <span class="term-title">RTL_TRANSMITTER_SHELL</span>
+            </div>
+            <div class="terminal-logs-body" id="terminalLogsBody"></div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-logo">Jubaer <span>Fahad</span></div>
+      <p class="footer-motto">"A calm brain can do anything."</p>
+      <p class="footer-copyright">Designed & built by Jubaer Fahad · 2025 · Leave marks everywhere.</p>
+    </div>
+  </footer>
+
+  <!-- Link Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
