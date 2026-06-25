@@ -490,7 +490,23 @@ document.addEventListener('DOMContentLoaded', () => {
       // Alternative Path (Business)
       { id: 'path_c', x: 0, y: 25, z: 55, label: 'Business & Consulting', path: 'business', size: 8 },
       { id: 'fba', x: 25, y: 105, z: 95, label: 'Amazon FBA', path: 'business', size: 4 },
-      { id: 'freelance', x: -30, y: 85, z: 80, label: 'RTL Consulting', path: 'business', size: 4 }
+      { id: 'freelance', x: -30, y: 85, z: 80, label: 'RTL Consulting', path: 'business', size: 4 },
+      // BCS Cadre Path
+      { id: 'path_d', x: -45, y: 10, z: 55, label: 'BCS Cadre', path: 'bcs_cadre', size: 8 },
+      { id: 'bcs_general', x: -85, y: 65, z: 75, label: 'General Track', path: 'bcs_cadre', size: 4 },
+      { id: 'bcs_tech', x: -60, y: 95, z: 95, label: 'Technical Track', path: 'bcs_cadre', size: 4 },
+      { id: 'bcs_const', x: -110, y: 110, z: 55, label: 'Constitution & Lit', path: 'bcs_cadre', size: 4 },
+      { id: 'bcs_written', x: -75, y: 145, z: 65, label: 'Written Drills', path: 'bcs_cadre', size: 4 },
+      // BPSC Non-Cadre Path
+      { id: 'path_e', x: 65, y: 20, z: -35, label: 'BPSC Non-Cadre', path: 'bpsc_non_cadre', size: 8 },
+      { id: 'non_cadre_ap', x: 110, y: 70, z: -55, label: 'Assistant Programmer', path: 'bpsc_non_cadre', size: 4 },
+      { id: 'non_cadre_ame', x: 130, y: 105, z: -25, label: 'Assistant Maint. Eng.', path: 'bpsc_non_cadre', size: 4 },
+      { id: 'non_cadre_tech', x: 85, y: 130, z: -65, label: 'Dual-Zone Tech', path: 'bpsc_non_cadre', size: 4 },
+      // Power & Telecom Path
+      { id: 'path_f', x: 15, y: 30, z: -60, label: 'Power & Telecom', path: 'power_telecom', size: 8 },
+      { id: 'power_net', x: 45, y: 80, z: -95, label: 'Data Comm & Networking', path: 'power_telecom', size: 4 },
+      { id: 'power_db', x: -15, y: 115, z: -85, label: 'DBMS & OOP Logic', path: 'power_telecom', size: 4 },
+      { id: 'power_ds', x: 25, y: 150, z: -75, label: 'Data Structures & Puzzles', path: 'power_telecom', size: 4 }
     ];
 
     // Branch connections links list
@@ -499,6 +515,9 @@ document.addEventListener('DOMContentLoaded', () => {
       { from: 'trunk', to: 'path_a' },
       { from: 'trunk', to: 'path_b' },
       { from: 'trunk', to: 'path_c' },
+      { from: 'trunk', to: 'path_d' },
+      { from: 'trunk', to: 'path_e' },
+      { from: 'trunk', to: 'path_f' },
       { from: 'path_a', to: 'kth' },
       { from: 'path_a', to: 'ntnu' },
       { from: 'path_a', to: 'aalto' },
@@ -509,7 +528,17 @@ document.addEventListener('DOMContentLoaded', () => {
       { from: 'path_b', to: 'bma' },
       { from: 'path_b', to: 'jco' },
       { from: 'path_c', to: 'fba' },
-      { from: 'path_c', to: 'freelance' }
+      { from: 'path_c', to: 'freelance' },
+      { from: 'path_d', to: 'bcs_general' },
+      { from: 'path_d', to: 'bcs_tech' },
+      { from: 'path_d', to: 'bcs_const' },
+      { from: 'path_d', to: 'bcs_written' },
+      { from: 'path_e', to: 'non_cadre_ap' },
+      { from: 'path_e', to: 'non_cadre_ame' },
+      { from: 'path_e', to: 'non_cadre_tech' },
+      { from: 'path_f', to: 'power_net' },
+      { from: 'path_f', to: 'power_db' },
+      { from: 'path_f', to: 'power_ds' }
     ];
 
     let angleX = -0.25;  // Slight pitch down
@@ -518,6 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetAngleY = 0.5;
 
     let isDragging = false;
+    let draggedDistance = 0;
     let previousMousePosition = { x: 0, y: 0 };
     let activePath = 'scholarship';
     let hoveredNode = null;
@@ -525,6 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mouse tilt interactions
     treeCanvas.addEventListener('mousedown', (e) => {
       isDragging = true;
+      draggedDistance = 0;
       previousMousePosition = { x: e.clientX, y: e.clientY };
     });
 
@@ -540,6 +571,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isDragging) {
         const deltaX = e.clientX - previousMousePosition.x;
         const deltaY = e.clientY - previousMousePosition.y;
+
+        draggedDistance += Math.hypot(deltaX, deltaY);
 
         targetAngleY += deltaX * 0.007;
         targetAngleX += deltaY * 0.007;
@@ -566,9 +599,6 @@ document.addEventListener('DOMContentLoaded', () => {
       hoveredNode = foundHover;
       if (hoveredNode && hoveredNode.path !== 'root') {
         treeCanvas.style.cursor = 'pointer';
-        if (hoveredNode.path !== activePath) {
-          triggerPathChange(hoveredNode.path);
-        }
       } else {
         treeCanvas.style.cursor = isDragging ? 'grabbing' : 'grab';
       }
@@ -578,6 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
     treeCanvas.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
         isDragging = true;
+        draggedDistance = 0;
         previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }
     });
@@ -591,11 +622,41 @@ document.addEventListener('DOMContentLoaded', () => {
         const deltaX = e.touches[0].clientX - previousMousePosition.x;
         const deltaY = e.touches[0].clientY - previousMousePosition.y;
 
+        draggedDistance += Math.hypot(deltaX, deltaY);
+
         targetAngleY += deltaX * 0.008;
         targetAngleX += deltaY * 0.008;
 
         targetAngleX = Math.max(-0.8, Math.min(0.2, targetAngleX));
         previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+    });
+
+    // Click/tap interaction to select node details
+    treeCanvas.addEventListener('click', (e) => {
+      if (draggedDistance > 12) return; // Skip selection if user was rotating the tree
+
+      const rect = treeCanvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      let foundClicked = null;
+      let minDistance = 20; // px click tolerance radius
+
+      nodes.forEach(node => {
+        if (node.projX && node.projY) {
+          const dist = Math.hypot(node.projX - mouseX, node.projY - mouseY);
+          if (dist < minDistance) {
+            foundClicked = node;
+            minDistance = dist;
+          }
+        }
+      });
+
+      if (foundClicked && foundClicked.path !== 'root') {
+        if (foundClicked.path !== activePath) {
+          triggerPathChange(foundClicked.path);
+        }
       }
     });
 
@@ -615,6 +676,15 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       });
+
+      // Update active timeline checklist
+      const timelines = document.querySelectorAll('.roadmap-timeline');
+      timelines.forEach(timeline => {
+        timeline.classList.remove('active');
+        if (timeline.id === `timeline-${pathName}`) {
+          timeline.classList.add('active');
+        }
+      });
     }
 
     // Dynamic 3D Renderer loop
@@ -631,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const cx = width * 0.5;
-      const cy = height * 0.7; // Lower center because tree grows upward
+      const cy = height * 0.38; // Adjusted center for larger scale downward tree
       const dist = 380;       // Perspective distance parameter
 
       const cosX = Math.cos(angleX);
@@ -639,7 +709,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const cosY = Math.cos(angleY);
       const sinY = Math.sin(angleY);
 
+      // Track-specific cyber neon colors
+      const pathColors = {
+        scholarship: '#38bdf8',       // Cyber Blue
+        military: '#10b981',          // Emerald Green
+        business: '#fbbf24',          // Amber Gold
+        bcs_cadre: '#a855f7',         // Royal Purple
+        bpsc_non_cadre: '#ec4899',    // Rose Pink
+        power_telecom: '#06b6d4',     // Telecom Cyan
+        root: '#d97706'               // Trunk/Root color
+      };
+
       // 1. Calculate 3D rotated & projected coordinates for all nodes
+      const coordScale = 1.8; // Make the tree 1.8x larger to fill the rectangle box
       nodes.forEach(node => {
         // Rotate around Y-axis
         const x1 = node.x * cosY - node.z * sinY;
@@ -651,8 +733,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Perspective projection formula
         const scale = dist / (dist + z2);
-        node.projX = cx + x1 * scale;
-        node.projY = cy - y1 * scale;
+        node.projX = cx + x1 * scale * coordScale;
+        node.projY = cy + y1 * scale * coordScale;
         node.depth = z2; // save depth for painter rendering order if needed
       });
 
@@ -670,13 +752,13 @@ document.addEventListener('DOMContentLoaded', () => {
           const isLimbActive = (toNode.path === activePath && toNode.path !== 'root');
           const isLimbHovered = (hoveredNode && toNode.path === hoveredNode.path && toNode.path !== 'root');
           const isThemeLight = !document.body.classList.contains('dark-theme');
-          const activeBronze = isThemeLight ? '#b45309' : '#d97706';
+          const pathColor = pathColors[toNode.path] || '#d97706';
 
           if (isLimbActive || isLimbHovered) {
-            ctx.strokeStyle = isThemeLight ? 'rgba(180, 83, 9, 0.85)' : 'rgba(217, 119, 6, 0.75)';
-            ctx.lineWidth = toNode.id.startsWith('path_') ? 3.5 : 2;
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = activeBronze;
+            ctx.strokeStyle = pathColor;
+            ctx.lineWidth = toNode.id.startsWith('path_') ? 3.5 : 2.2;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = pathColor;
           } else {
             ctx.strokeStyle = isThemeLight ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.08)';
             ctx.lineWidth = toNode.id.startsWith('path_') ? 2 : 1;
@@ -693,19 +775,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const isNodeHovered = (hoveredNode && node.id === hoveredNode.id);
         const isNodeLimbHovered = (hoveredNode && node.path === hoveredNode.path && node.path !== 'root');
         const isThemeLight = !document.body.classList.contains('dark-theme');
-        const activeBronze = isThemeLight ? '#b45309' : '#d97706';
+        const pathColor = pathColors[node.path] || '#d97706';
 
         ctx.beginPath();
-        ctx.arc(node.projX, node.projY, node.size + (isNodeHovered ? 2 : 0), 0, Math.PI * 2);
+        ctx.arc(node.projX, node.projY, node.size + (isNodeHovered ? 2.5 : 0), 0, Math.PI * 2);
 
         if (isNodeHovered) {
-          ctx.fillStyle = '#ff9f00';
-          ctx.shadowColor = '#ff9f00';
-          ctx.shadowBlur = 10;
+          ctx.fillStyle = '#ffffff';
+          ctx.shadowColor = pathColor;
+          ctx.shadowBlur = 12;
         } else if (isNodeActive || isNodeLimbHovered) {
-          ctx.fillStyle = activeBronze;
-          ctx.shadowColor = activeBronze;
-          ctx.shadowBlur = 6;
+          ctx.fillStyle = pathColor;
+          ctx.shadowColor = pathColor;
+          ctx.shadowBlur = 8;
         } else {
           ctx.fillStyle = isThemeLight ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)';
           ctx.shadowBlur = 0;
@@ -721,9 +803,11 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.textAlign = 'center';
 
           if (isNodeHovered) {
-            ctx.fillStyle = '#ff9f00';
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowColor = pathColor;
+            ctx.shadowBlur = 4;
           } else if (isNodeActive || isNodeLimbHovered) {
-            ctx.fillStyle = isThemeLight ? '#1c1d22' : '#f1f5f9';
+            ctx.fillStyle = pathColor;
           } else {
             ctx.fillStyle = isThemeLight ? 'rgba(0, 0, 0, 0.55)' : 'rgba(255, 255, 255, 0.45)';
           }

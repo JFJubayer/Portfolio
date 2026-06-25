@@ -2055,19 +2055,12 @@ header.scrolled {
   line-height: 1.7;
 }
 
-/* 3D Tree Layout Grid */
+/* 3D Tree Layout (Stacked Columns) */
 .trajectory-board {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
   margin-bottom: 5rem;
-}
-
-@media (min-width: 1024px) {
-  .trajectory-board {
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: start;
-  }
 }
 
 .tree-canvas-container {
@@ -2081,6 +2074,7 @@ header.scrolled {
   align-items: center;
   gap: 1rem;
   position: relative;
+  width: 100%;
 }
 
 .tree-canvas-container::before {
@@ -2095,7 +2089,7 @@ header.scrolled {
 
 #tree-canvas {
   width: 100%;
-  height: 420px;
+  height: 600px;
   display: block;
   background: transparent;
   cursor: grab;
@@ -2107,7 +2101,7 @@ header.scrolled {
 
 @media (max-width: 768px) {
   #tree-canvas {
-    height: 320px;
+    height: 450px;
   }
 }
 
@@ -2117,7 +2111,10 @@ header.scrolled {
   border: var(--panel-border);
   border-radius: var(--border-radius-lg);
   padding: 2.5rem;
-  min-height: 470px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: auto;
   position: relative;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
@@ -2240,9 +2237,14 @@ header.scrolled {
 
 /* Interactive Roadmap Phase Checklist Timeline */
 .roadmap-timeline {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 2.5rem;
+  animation: fadeIn 0.45s ease;
+}
+
+.roadmap-timeline.active {
+  display: flex;
 }
 
 .roadmap-card {
