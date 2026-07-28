@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Md. Jubaer Hossain Fahad - CV</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Link Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    body {
+      background: #fcfbf8 !important; /* Cream paper white for light theme */
+      color: #111216 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+    
+    .cv-paper {
+      width: 100% !important;
+      max-width: 850px !important;
+      background: #fcfbf8 !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 2.2rem !important; /* Slightly reduced padding */
+      box-shadow: none !important;
+    }
+
+    .cv-header {
+      padding-bottom: 1.5rem !important;
+      margin-bottom: 1.5rem !important;
+      gap: 1rem !important;
+    }
+
+    .cv-name-title h2 {
+      font-size: 2.1rem !important;
+    }
+
+    .cv-section {
+      margin-bottom: 1.5rem !important; /* Reduced section margins */
+    }
+
+    .cv-section-title {
+      font-size: 1.15rem !important;
+      padding-bottom: 0.4rem !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .cv-summary {
+      font-size: 0.9rem !important;
+      line-height: 1.6 !important;
+    }
+
+    .cv-grid {
+      gap: 1.8rem !important; /* Slightly reduced column gap */
+    }
+
+    .cv-item {
+      margin-bottom: 1rem !important; /* Reduced item margins */
+    }
+
+    .cv-item-header {
+      font-size: 0.95rem !important;
+    }
+
+    .cv-item-sub {
+      font-size: 0.8rem !important;
+      margin-bottom: 0.4rem !important;
+    }
+
+    .cv-item-bullets li {
+      font-size: 0.85rem !important;
+      margin-bottom: 0.25rem !important;
+      line-height: 1.45 !important;
+    }
+
+    .cv-skills-category {
+      font-size: 0.85rem !important;
+      margin-bottom: 0.6rem !important;
+      line-height: 1.45 !important;
+    }
+
+    /* Print styling to optimize layout spacing */
+    @media print {
+      body {
+        background: #ffffff !important;
+      }
+      .cv-paper {
+        background: #ffffff !important;
+        padding: 2rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-paper">
+    <div class="cv-header">
+      <div class="cv-name-title">
+        <h2>Md. Jubaer Hossain Fahad</h2>
+        <p>Embedded Systems & RTL hardware Engineer | FPGA | VLSI | ROS 2</p>
+      </div>
+      <div class="cv-meta">
+        <div><i class="fa-solid fa-user" style="margin-right: 0.4rem;"></i> Age: 23 Years</div>
+        <div><i class="fa-solid fa-envelope" style="margin-right: 0.4rem;"></i> jubayerjf28@gmail.com</div>
+        <div><i class="fa-solid fa-phone" style="margin-right: 0.4rem;"></i> +8801830900746</div>
+        <div><i class="fa-solid fa-location-dot" style="margin-right: 0.4rem;"></i> Mymensingh, Bangladesh</div>
+        <div>
+          <a href="https://github.com/JFJubayer" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a> | 
+          <a href="https://linkedin.com/in/jubaer-fahad-0aabab33a" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Summary</div>
+      <div class="cv-summary">
+        Curious and self-driven engineering student focusing on digital hardware design, FPGA logic modeling, VLSI layouts, and embedded architectures. Enthusiastic about creating highly reliable system pipelines. Active participant in global hackathons, challenge events, and community development frameworks, targeting a global research and engineering career abroad.
+      </div>
+    </div>
+
+    <div class="cv-grid">
+      <div>
+        <div class="cv-section">
+          <div class="cv-section-title">Education</div>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span>B.Sc. in Engineering</span>
+              <span>2022 – Present</span>
+            </div>
+            <div class="cv-item-sub">
+              <span>Mymensingh Engineering College</span>
+              <span>CGPA: 3.7 / 4.0</span>
+            </div>
+            <ul class="cv-item-bullets">
+              <li>2nd Year, 2nd Semester student.</li>
+              <li>Advanced coursework in Digital Logic Design, Embedded Systems, Computer Architecture, and Algorithms.</li>
+            </ul>
+          </div>
+          <div class="cv-item" style="margin-top: -0.75rem;">
+            <div class="cv-item-header">
+              <span>HSC & SSC (Science)</span>
+              <span>GPA 5.00 / 5.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="cv-section-title">Technical Expertise</div>
+          <div class="cv-skills-category">
+            <strong>Languages:</strong> Verilog, SystemVerilog, VHDL, C++, C, Python, Dart.
+          </div>
+          <div class="cv-skills-category">
+            <strong>Hardware & Control:</strong> FPGAs, Microcontrollers, VLSI Layouts, PID Control, ROS 2, Gazebo Simulation.
+          </div>
+          <div class="cv-skills-category">
+            <strong>EDA & Dev Tools:</strong> AMD Vivado, Verilator, GTKWave, Tesseract OCR, Flutter, Git.
+          </div>
+        </div>
+
+        <div class="cv-section" style="margin-bottom: 0;">
+          <div class="cv-section-title">Achievements & Activities</div>
+          <ul class="cv-item-bullets">
+            <li><strong>2nd Place</strong> — Andes Hackathon 2025 (RISC-V ACE instruction design).</li>
+            <li><strong>2nd Place</strong> — Inter-College Problem Solving Competition (algorithms & optimization).</li>
+            <li><strong>Hades-V Challenge 2026</strong> — Competitor (ongoing CPU design).</li>
+            <li><strong>Member</strong> — BRAC Amar Notun Network civic action project.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="cv-section" style="margin-bottom: 0;">
+          <div class="cv-section-title">Selected Projects</div>
+          
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span>HaDes-V Microcontroller Core</span>
+              <span>SystemVerilog, FPGA</span>
+            </div>
+            <ul class="cv-item-bullets">
+              <li>Designing a pipelined 32-bit RISC-V processor architecture.</li>
+              <li>Developed for the TU Graz RISC-V International Challenge.</li>
+              <li>Integrated Verilator simulation framework for testing.</li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span>CorridorShare P2P Logistics</span>
+              <span>Next.js, React, Vercel</span>
+            </div>
+            <ul class="cv-item-bullets">
+              <li>Created a crowd-shipping platform (corridorshare.vercel.app) matching highway travelers with package deliveries.</li>
+              <li>Built real-time detour calculations, micro-surcharge estimators, and secure escrow models.</li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span>Onnoy (অন্বয়) Web Platform</span>
+              <span>Next.js, React, Vercel</span>
+            </div>
+            <ul class="cv-item-bullets">
+              <li>Developed the official portal (onnoy.vercel.app) for a youth initiative promoting digital citizenship in Bangladesh.</li>
+              <li>Designed responsive resource library and support channels for students.</li>
+            </ul>
+          </div>
+
+          <div class="cv-item" style="margin-bottom: 0;">
+            <div class="cv-item-header">
+              <span>Autonomous Line-Follower Robot</span>
+              <span>C++, PID</span>
+            </div>
+            <ul class="cv-item-bullets">
+              <li>Developed a microcontroller-based robotics platform.</li>
+              <li>Configured IR sensor array filtering and custom PID navigation loops.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
