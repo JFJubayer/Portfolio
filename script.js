@@ -1184,6 +1184,215 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       drawHealth();
     }
+
+    // CorridorShare Loop
+    const canvasCorridor = document.getElementById('project-canvas-corridor');
+    if (canvasCorridor) {
+      const ctx = canvasCorridor.getContext('2d');
+      let w = canvasCorridor.width = canvasCorridor.offsetWidth || 300;
+      let h = canvasCorridor.height = canvasCorridor.offsetHeight || 180;
+
+      window.addEventListener('resize', () => {
+        if (canvasCorridor) {
+          w = canvasCorridor.width = canvasCorridor.offsetWidth || 300;
+          h = canvasCorridor.height = canvasCorridor.offsetHeight || 180;
+        }
+      });
+
+      let tick = 0;
+      function drawCorridor() {
+        if (!canvasCorridor.offsetParent) {
+          requestAnimationFrame(drawCorridor);
+          return;
+        }
+        ctx.clearRect(0, 0, w, h);
+        tick++;
+
+        const cy = h / 2;
+
+        // Draw background grid lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+        ctx.lineWidth = 0.5;
+        for (let i = 20; i < w; i += 20) {
+          ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke();
+        }
+        for (let i = 20; i < h; i += 20) {
+          ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(w, i); ctx.stroke();
+        }
+
+        // Draw Highway Route
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(30, cy + 20);
+        ctx.bezierCurveTo(w / 3, cy - 30, (2 * w) / 3, cy + 30, w - 30, cy - 20);
+        ctx.stroke();
+
+        // Dashed center line
+        ctx.strokeStyle = 'rgba(249, 115, 22, 0.2)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(30, cy + 20);
+        ctx.bezierCurveTo(w / 3, cy - 30, (2 * w) / 3, cy + 30, w - 30, cy - 20);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Calculate traveler dot position
+        const t = (tick * 0.005) % 1.0;
+        const p0 = { x: 30, y: cy + 20 };
+        const p1 = { x: w / 3, y: cy - 30 };
+        const p2 = { x: (2 * w) / 3, y: cy + 30 };
+        const p3 = { x: w - 30, y: cy - 20 };
+
+        const cx_pos = (1-t)*(1-t)*(1-t)*p0.x + 3*(1-t)*(1-t)*t*p1.x + 3*(1-t)*t*t*p2.x + t*t*t*p3.x;
+        const cy_pos = (1-t)*(1-t)*(1-t)*p0.y + 3*(1-t)*(1-t)*t*p1.y + 3*(1-t)*t*t*p2.y + t*t*t*p3.y;
+
+        // Draw Geofence Radar Pulse
+        const radarRadius = 25 + Math.sin(tick * 0.08) * 8;
+        ctx.strokeStyle = 'rgba(249, 115, 22, 0.25)';
+        ctx.fillStyle = 'rgba(249, 115, 22, 0.02)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(cx_pos, cy_pos, radarRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Draw Package pickup nodes nearby
+        const packages = [
+          { x: w / 2 - 10, y: cy - 20, active: true },
+          { x: w / 3 + 20, y: cy + 25, active: false }
+        ];
+
+        packages.forEach(pkg => {
+          ctx.fillStyle = pkg.active ? '#f97316' : 'rgba(255,255,255,0.2)';
+          ctx.beginPath();
+          ctx.arc(pkg.x, pkg.y, pkg.active ? 3 : 2, 0, Math.PI * 2);
+          ctx.fill();
+
+          if (pkg.active) {
+            ctx.strokeStyle = 'rgba(249, 115, 22, 0.4)';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(cx_pos, cy_pos);
+            ctx.lineTo(pkg.x, pkg.y);
+            ctx.stroke();
+          }
+        });
+
+        // Draw traveler dot
+        ctx.fillStyle = '#f97316';
+        ctx.beginPath();
+        ctx.arc(cx_pos, cy_pos, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Text indicators
+        ctx.font = '8px "JetBrains Mono", monospace';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.textAlign = 'left';
+        ctx.fillText("RADAR: SCANNING", 20, 25);
+        ctx.fillStyle = '#f97316';
+        ctx.fillText("P2P CORRIDOR", 20, 35);
+
+        requestAnimationFrame(drawCorridor);
+      }
+      drawCorridor();
+    }
+
+    // Onnoy Loop
+    const canvasOnnoy = document.getElementById('project-canvas-onnoy');
+    if (canvasOnnoy) {
+      const ctx = canvasOnnoy.getContext('2d');
+      let w = canvasOnnoy.width = canvasOnnoy.offsetWidth || 300;
+      let h = canvasOnnoy.height = canvasOnnoy.offsetHeight || 180;
+
+      window.addEventListener('resize', () => {
+        if (canvasOnnoy) {
+          w = canvasOnnoy.width = canvasOnnoy.offsetWidth || 300;
+          h = canvasOnnoy.height = canvasOnnoy.offsetHeight || 180;
+        }
+      });
+
+      let tick = 0;
+      const nodes = [
+        { x: 60, y: 50, vx: 0.1, vy: 0.15, size: 3 },
+        { x: 120, y: 120, vx: -0.15, vy: 0.1, size: 4 },
+        { x: 180, y: 60, vx: 0.2, vy: -0.1, size: 3 },
+        { x: 240, y: 110, vx: -0.1, vy: -0.15, size: 5 },
+        { x: 150, y: 80, vx: 0.08, vy: 0.08, size: 4.5 }
+      ];
+
+      function drawOnnoy() {
+        if (!canvasOnnoy.offsetParent) {
+          requestAnimationFrame(drawOnnoy);
+          return;
+        }
+        ctx.clearRect(0, 0, w, h);
+        tick++;
+
+        // Draw scanning wave circle
+        const cx = w / 2;
+        const cy = h / 2;
+        const waveRadius = (tick * 0.8) % (w / 2);
+        ctx.strokeStyle = `rgba(56, 189, 248, ${Math.max(0, 1 - waveRadius / (w / 2)) * 0.25})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(cx, cy, waveRadius, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Update and draw nodes
+        nodes.forEach(node => {
+          node.x += node.vx;
+          node.y += node.vy;
+
+          const margin = 20;
+          if (node.x < margin || node.x > w - margin) node.vx *= -1;
+          if (node.y < margin || node.y > h - margin) node.vy *= -1;
+
+          node.x = Math.max(margin, Math.min(w - margin, node.x));
+          node.y = Math.max(margin, Math.min(h - margin, node.y));
+        });
+
+        // Draw connections
+        ctx.lineWidth = 0.8;
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+            if (dist < 100) {
+              ctx.strokeStyle = `rgba(56, 189, 248, ${(1 - dist / 100) * 0.15})`;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw nodes
+        nodes.forEach(node => {
+          ctx.fillStyle = '#38bdf8';
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.size + Math.sin(tick * 0.05 + node.size) * 0.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.size + 4, 0, Math.PI * 2);
+          ctx.stroke();
+        });
+
+        // Text HUD
+        ctx.font = '8px "JetBrains Mono", monospace';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.textAlign = 'left';
+        ctx.fillText("SECURE_NET: ONLINE", 20, 25);
+        ctx.fillStyle = '#38bdf8';
+        ctx.fillText("DIGITAL CITIZENSHIP", 20, 35);
+
+        requestAnimationFrame(drawOnnoy);
+      }
+      drawOnnoy();
+    }
   }
 
   initProjectCanvases();
