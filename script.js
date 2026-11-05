@@ -1393,6 +1393,118 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       drawOnnoy();
     }
+
+    // Digital Museum Loop
+    const canvasMuseum = document.getElementById('project-canvas-museum');
+    if (canvasMuseum) {
+      const ctx = canvasMuseum.getContext('2d');
+      let w = canvasMuseum.width = canvasMuseum.offsetWidth || 300;
+      let h = canvasMuseum.height = canvasMuseum.offsetHeight || 180;
+
+      window.addEventListener('resize', () => {
+        if (canvasMuseum) {
+          w = canvasMuseum.width = canvasMuseum.offsetWidth || 300;
+          h = canvasMuseum.height = canvasMuseum.offsetHeight || 180;
+        }
+      });
+
+      let tick = 0;
+      // Saffron, terracotta and green: the Digital Museum palette
+      const weave = ['240, 169, 59', '201, 74, 45', '46, 148, 104'];
+
+      function drawMuseum() {
+        if (!canvasMuseum.offsetParent) {
+          requestAnimationFrame(drawMuseum);
+          return;
+        }
+        ctx.clearRect(0, 0, w, h);
+        tick++;
+
+        const cx = w / 2;
+        const half = Math.min(105, w / 2 - 28);
+        const left = cx - half;
+        const right = cx + half;
+        const floorY = h - 36;
+        const beamY = 76;
+
+        // Steps
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+        ctx.lineWidth = 1;
+        for (let i = 0; i < 3; i++) {
+          ctx.strokeRect(left - 6 - i * 7, floorY + i * 5, (half + 6 + i * 7) * 2, 5);
+        }
+
+        // Columns
+        const cols = 5;
+        for (let i = 0; i < cols; i++) {
+          const x = left + (i / (cols - 1)) * (right - left) - 4.5;
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.025)';
+          ctx.fillRect(x, beamY, 9, floorY - beamY);
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.14)';
+          ctx.strokeRect(x, beamY, 9, floorY - beamY);
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
+          ctx.beginPath();
+          ctx.moveTo(x + 4.5, beamY + 4);
+          ctx.lineTo(x + 4.5, floorY - 4);
+          ctx.stroke();
+        }
+
+        // Beam and pediment
+        ctx.strokeStyle = 'rgba(240, 169, 59, 0.45)';
+        ctx.strokeRect(left - 10, beamY - 9, (right - left) + 20, 9);
+        ctx.fillStyle = 'rgba(240, 169, 59, 0.04)';
+        ctx.beginPath();
+        ctx.moveTo(left - 14, beamY - 9);
+        ctx.lineTo(cx, 30);
+        ctx.lineTo(right + 14, beamY - 9);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Woven diamond band along the beam
+        let n = 0;
+        for (let x = left - 4; x <= right + 4; x += 10, n++) {
+          const alpha = 0.3 + 0.4 * Math.abs(Math.sin(tick * 0.04 + n * 0.6));
+          ctx.fillStyle = `rgba(${weave[n % 3]}, ${alpha})`;
+          ctx.beginPath();
+          ctx.moveTo(x, beamY - 7);
+          ctx.lineTo(x + 3, beamY - 4.5);
+          ctx.lineTo(x, beamY - 2);
+          ctx.lineTo(x - 3, beamY - 4.5);
+          ctx.closePath();
+          ctx.fill();
+        }
+
+        // Consent beacon in the pediment
+        const pulse = 0.5 + 0.5 * Math.sin(tick * 0.05);
+        ctx.strokeStyle = `rgba(240, 169, 59, ${0.3 + pulse * 0.4})`;
+        ctx.beginPath();
+        ctx.arc(cx, 54, 6 + pulse * 2, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = '#f0a93b';
+        ctx.beginPath();
+        ctx.arc(cx, 54, 2.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Visitor walking along the portico
+        const visitorX = left + ((tick * 0.5) % (right - left));
+        ctx.fillStyle = '#2e9468';
+        ctx.beginPath();
+        ctx.arc(visitorX, floorY - 7, 2.6, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Text HUD
+        ctx.font = '8px "JetBrains Mono", monospace';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.textAlign = 'left';
+        ctx.fillText("CONSENT: REQUIRED", 20, 25);
+        ctx.fillStyle = '#f0a93b';
+        ctx.fillText("DIGITAL MUSEUM", 20, 35);
+
+        requestAnimationFrame(drawMuseum);
+      }
+      drawMuseum();
+    }
   }
 
   initProjectCanvases();
@@ -1425,7 +1537,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ----------------------------------------------------
      5. TYPEWRITER EFFECT
      ---------------------------------------------------- */
-  const words = ["FPGA & RTL Engineer", "Embedded Hardware Designer", "ROS 2 Robotics Integrator", "Andes Hackathon Winner", "Amazon FBA Entrepreneur"];
+  const words = ["FPGA & RTL Engineer", "Embedded Hardware Designer", "ROS 2 Robotics Integrator", "Andes Hackathon 2nd Place", "Amazon FBA Entrepreneur"];
   let wordIdx = 0;
   let charIdx = 0;
   let isDeleting = false;
