@@ -82,10 +82,10 @@
   </div>
 
   <!-- FLOATING ACTION BUTTON FOR CV DOWNLOAD -->
-  <button class="fab-cv" id="fabCv" onclick="window.location.hash='#cv'" aria-label="Go to Resume section">
-    <i class="fa-solid fa-file-invoice"></i>
-    <span class="fab-tooltip">View & Download CV</span>
-  </button>
+  <a href="Md_Jubaer_Hossain_Fahad_CV.pdf" download="Md_Jubaer_Hossain_Fahad_CV.pdf" class="fab-cv" id="fabCv" aria-label="Download CV (PDF)">
+    <i class="fa-solid fa-file-arrow-down"></i>
+    <span class="fab-tooltip">Download CV (PDF)</span>
+  </a>
 
   <!-- 1. HERO SECTION -->
   <section id="hero">
@@ -384,11 +384,11 @@
             <!-- Simulator Controls -->
             <div class="sim-controls">
               <button id="btn-run-sim" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.82rem; font-family: var(--font-heading);">
-                <i class="fa-solid fa-play"></i> RUN SIMULATION
+                <i class="fa-solid fa-pause"></i> PAUSE SIM
               </button>
               <div class="sim-status-led">
-                <span class="led-dot active" id="sim-led"></span>
-                <span class="led-text" id="sim-status-text">SYS_STANDBY</span>
+                <span class="led-dot running" id="sim-led"></span>
+                <span class="led-text" id="sim-status-text" style="color: #10b981;">SYS_RUNNING</span>
               </div>
             </div>
           </div>
@@ -1007,13 +1007,23 @@
   <section id="roadmap">
     <div class="container">
       <h2 class="section-title reveal">Strategic Career Roadmap</h2>
-      <p class="roadmap-intro reveal">An interactive 3D Trajectory Tree outlining Jubaer's academic growth, target placements, and business backups. Drag to rotate the tree; hover over nodes to swap strategy details.</p>
+      <p class="roadmap-intro reveal">An interactive 3D Trajectory Tree outlining Jubaer's academic growth, research scholarships, public-sector tracks, and remote engineering consulting. Drag to rotate the tree, and click any branch node or track tab below to switch strategy details.</p>
       
       <!-- Interactive 3D Trajectory Board Grid -->
       <div class="trajectory-board reveal">
         <!-- 3D Canvas rendering window -->
         <div class="tree-canvas-container">
           <canvas id="tree-canvas"></canvas>
+        </div>
+
+        <!-- Quick Track Selector Pills (synced with 3D Tree) -->
+        <div class="roadmap-track-tabs" role="tablist" aria-label="Career Roadmap Tracks">
+          <button type="button" class="roadmap-track-btn active" data-path="scholarship"><i class="fa-solid fa-graduation-cap"></i> Scholarships</button>
+          <button type="button" class="roadmap-track-btn" data-path="bcs_cadre"><i class="fa-solid fa-landmark"></i> BCS Cadre</button>
+          <button type="button" class="roadmap-track-btn" data-path="bpsc_non_cadre"><i class="fa-solid fa-code"></i> BPSC Non-Cadre</button>
+          <button type="button" class="roadmap-track-btn" data-path="power_telecom"><i class="fa-solid fa-bolt"></i> Power &amp; Telecom</button>
+          <button type="button" class="roadmap-track-btn" data-path="consulting"><i class="fa-solid fa-microchip"></i> FPGA &amp; RTL Consulting</button>
+          <button type="button" class="roadmap-track-btn" data-path="military"><i class="fa-solid fa-shield-halved"></i> Military Commissions</button>
         </div>
 
         <!-- Trajectory details panels -->
@@ -1092,36 +1102,36 @@
             </div>
           </div>
 
-          <!-- Panel C: FBA & Freelance -->
-          <div class="path-detail-pane" id="path-pane-business">
-            <h3>Amazon FBA & FPGA Freelancing <span class="probability-badge" style="color: var(--color-orange); border-color: rgba(194, 65, 12, 0.3); background: rgba(194, 65, 12, 0.04);">Success Probability: 50%</span></h3>
-            <p class="path-desc-text">A flexible, self-funded business and freelance path. You can start Amazon FBA from Bangladesh to generate high business cash flows, while utilizing Upwork/contract portals to consult on FPGA/RTL logic design. Highly flexible, serving as an entrepreneurial alternative to fund studies.</p>
+          <!-- Panel C: Remote FPGA & RTL Consulting -->
+          <div class="path-detail-pane" id="path-pane-consulting">
+            <h3>Remote FPGA &amp; RTL Consulting <span class="probability-badge" style="color: var(--color-terracotta); border-color: rgba(194, 65, 12, 0.3); background: rgba(194, 65, 12, 0.06);">Success Probability: 65%</span></h3>
+            <p class="path-desc-text">An independent remote hardware engineering pathway. Leveraging SystemVerilog, Verilator verification suites, and embedded C/C++ firmware skills to work directly with international semiconductor startups and R&amp;D teams while funding graduate research applications.</p>
             
             <div class="relevance-metrics">
               <div class="relevance-label">
                 <span>Profile Compatibility Index</span>
-                <span>65%</span>
+                <span>80%</span>
               </div>
               <div class="relevance-bar-wrap">
-                <div class="relevance-bar" data-relevance="65%"></div>
+                <div class="relevance-bar" data-relevance="80%"></div>
               </div>
             </div>
 
             <div class="path-bullet-grid">
               <div class="path-bullet-col">
-                <h5>Amazon FBA Setup</h5>
+                <h5>RTL Design &amp; Verification</h5>
                 <ul>
-                  <li><i class="fa-solid fa-angles-right"></i> <strong>Capital</strong>: Minimum $1,000 seed funds ($500 - $3,000 range recommended)</li>
-                  <li><i class="fa-solid fa-angles-right"></i> <strong>Entity</strong>: Register US LLC, local agent, and Seller Central account</li>
-                  <li><i class="fa-solid fa-angles-right"></i> <strong>Flows</strong>: High potential cash flow to support foreign education</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Digital Logic</strong>: Custom SystemVerilog/Verilog IP cores, pipelined datapaths, and AXI/SPI/UART peripherals</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Verification</strong>: Automated Verilator C++ testbenches, waveform debugging in GTKWave, and FPGA synthesis</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Proof of Work</strong>: Open-source HaDes-V RISC-V core and Andes Hackathon ACE extensions</li>
                 </ul>
               </div>
               <div class="path-bullet-col" style="margin-top: 1rem;">
-                <h5>FPGA Consulting</h5>
+                <h5>Embedded Firmware &amp; Robotics</h5>
                 <ul>
-                  <li><i class="fa-solid fa-angles-right"></i> <strong>Freelancing</strong>: Bid on Upwork RTL, Verilog, and hardware debugging jobs</li>
-                  <li><i class="fa-solid fa-angles-right"></i> <strong>Portfolio</strong>: Link custom Andes hackathon instructions as proof of work</li>
-                  <li><i class="fa-solid fa-angles-right"></i> <strong>Flexibility</strong>: Can be done in parallel with other path operations</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Bare-Metal MCU</strong>: Real-time C/C++ firmware and PID control loops for STM32 and ESP32 hardware</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Simulation</strong>: ROS 2 node integration and Gazebo hardware-in-the-loop prototyping</li>
+                  <li><i class="fa-solid fa-angles-right"></i> <strong>Flexibility</strong>: Remote contract collaborations alongside academic research preparation</li>
                 </ul>
               </div>
             </div>
@@ -1419,36 +1429,32 @@
 
       </div>
 
-      <!-- Interactive 2.5-Year Phase Checklist Board - Business -->
-      <div class="roadmap-timeline" id="timeline-business">
+      <!-- Interactive 2.5-Year Phase Checklist Board - Remote Consulting -->
+      <div class="roadmap-timeline" id="timeline-consulting">
         
         <!-- Phase 1 -->
         <div class="roadmap-card hud-panel reveal">
           <div class="roadmap-phase-info">
             <span class="roadmap-phase-num">Phase 01</span>
-            <h3 class="roadmap-phase-title">Research & Entity</h3>
+            <h3 class="roadmap-phase-title">Open-Source IP &amp; Profile</h3>
             <span class="roadmap-phase-time">Now – 6 Months</span>
           </div>
           <div class="roadmap-details">
             <div class="roadmap-goals-list">
               <label class="goal-item">
                 <input type="checkbox">
-                <span>Perform deep FBA product research and supplier scouting on Alibaba.</span>
+                <span>Publish documented SystemVerilog IP blocks (UART, SPI, RV32I pipeline stages) with Verilator testbenches on GitHub.</span>
               </label>
               <label class="goal-item">
                 <input type="checkbox">
-                <span>Register a US LLC entity, secure registered agent, and get EIN.</span>
+                <span>Set up specialized hardware consulting profiles highlighting Andes Hackathon &amp; HaDes-V RTL work.</span>
               </label>
               <label class="goal-item">
                 <input type="checkbox">
-                <span>Establish Amazon Seller Central and global payment gateway accounts.</span>
-              </label>
-              <label class="goal-item">
-                <input type="checkbox">
-                <span>Set up freelancer profiles on Upwork, Fiverr, and specialized FPGA portals.</span>
+                <span>Build synthesis timing &amp; utilization case studies using AMD Vivado.</span>
               </label>
             </div>
-            <p class="roadmap-strategy">Setting up legal entities, conducting product research, and preparing freelance profiles.</p>
+            <p class="roadmap-strategy">Packaging verifiable RTL and embedded firmware repositories as clear engineering proof-of-work.</p>
           </div>
         </div>
 
@@ -1456,25 +1462,25 @@
         <div class="roadmap-card hud-panel reveal">
           <div class="roadmap-phase-info">
             <span class="roadmap-phase-num">Phase 02</span>
-            <h3 class="roadmap-phase-title">Launch & Bid</h3>
+            <h3 class="roadmap-phase-title">Client Delivery &amp; Verification</h3>
             <span class="roadmap-phase-time">6 – 12 Months</span>
           </div>
           <div class="roadmap-details">
             <div class="roadmap-goals-list">
               <label class="goal-item">
                 <input type="checkbox">
-                <span>Order initial small batch of inventory to test FBA demand and logistics.</span>
+                <span>Deliver initial remote RTL design, HDL verification, and STM32/ESP32 firmware contracts.</span>
               </label>
               <label class="goal-item">
                 <input type="checkbox">
-                <span>Bid on remote RTL/Verilog logic design projects and firmware consulting.</span>
+                <span>Contribute to open-source RISC-V / FPGA ecosystems to expand global engineering visibility.</span>
               </label>
               <label class="goal-item">
                 <input type="checkbox">
-                <span>Develop custom hardware demonstrations to share with prospective clients.</span>
+                <span>Develop reusable verification harnesses for rapid hardware debugging turnarounds.</span>
               </label>
             </div>
-            <p class="roadmap-strategy">Testing FBA market response with small batches and securing initial freelance contracts.</p>
+            <p class="roadmap-strategy">Building strong client references through reliable RTL verification and embedded systems delivery.</p>
           </div>
         </div>
 
@@ -1482,25 +1488,21 @@
         <div class="roadmap-card hud-panel reveal">
           <div class="roadmap-phase-info">
             <span class="roadmap-phase-num">Phase 03</span>
-            <h3 class="roadmap-phase-title">Scale-up & Expand</h3>
+            <h3 class="roadmap-phase-title">Long-Term R&amp;D Contracts</h3>
             <span class="roadmap-phase-time">12+ Months</span>
           </div>
           <div class="roadmap-details">
             <div class="roadmap-goals-list">
               <label class="goal-item">
                 <input type="checkbox">
-                <span>Scale FBA product listings to full catalog size with continuous shipping pipelines.</span>
+                <span>Partner on retainer-based FPGA prototyping and SoC verification roles with international hardware teams.</span>
               </label>
               <label class="goal-item">
                 <input type="checkbox">
-                <span>Secure long-term contracts with freelance chip consulting and verification clients.</span>
-              </label>
-              <label class="goal-item">
-                <input type="checkbox">
-                <span>Reinvest business profits to fund graduate-level academic studies.</span>
+                <span>Leverage industry project experience to strengthen M.Sc. research lab applications in Europe.</span>
               </label>
             </div>
-            <p class="roadmap-strategy">Maximizing FBA cash flows and stabilizing remote engineering consultant revenues.</p>
+            <p class="roadmap-strategy">Transitioning contract collaborations into long-term remote R&amp;D partnerships and graduate funding support.</p>
           </div>
         </div>
 
@@ -1789,7 +1791,7 @@
             <h3 class="blog-title">Why I'm Building a RISC-V CPU from Scratch</h3>
             <p class="blog-excerpt">Developing the HaDes-V pipelined RV32I microcontroller core is an intense lesson in system timing, pipelining hazards, and memory control. This article documents compiling custom toolchains, simulating hazards using Verilator, and monitoring hardware signals in GTKWave.</p>
             <div class="blog-readmore">
-              <a href="#contact" class="btn-text">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+              <button type="button" class="btn-text blog-read-btn" data-article="riscv">Read Article <i class="fa-solid fa-arrow-right-long"></i></button>
             </div>
           </div>
         </div>
@@ -1804,7 +1806,7 @@
             <h3 class="blog-title">What I Learned at Andes Hackathon 2025</h3>
             <p class="blog-excerpt">Winning 2nd place at the Andes Hackathon taught my team how to design hardware accelerators using the Andes Custom Extension (ACE) framework. I detail our approach to instruction extension design, toolchain configuration, and accelerating matrix mathematics inside the CPU pipeline under strict timelines.</p>
             <div class="blog-readmore">
-              <a href="#contact" class="btn-text">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+              <button type="button" class="btn-text blog-read-btn" data-article="andes">Read Article <i class="fa-solid fa-arrow-right-long"></i></button>
             </div>
           </div>
         </div>
@@ -1819,7 +1821,7 @@
             <h3 class="blog-title">My Plan to Work in Europe as an Engineer</h3>
             <p class="blog-excerpt">Navigating visa systems and entry requirements for Embedded/FPGA careers in Europe from Bangladesh requires a structured strategy. This article covers building remote-friendly portfolios, targeting high-demand European engineering hubs like Munich and Stockholm, and leveraging postgraduate opportunities.</p>
             <div class="blog-readmore">
-              <a href="#contact" class="btn-text">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+              <button type="button" class="btn-text blog-read-btn" data-article="europe">Read Article <i class="fa-solid fa-arrow-right-long"></i></button>
             </div>
           </div>
         </div>
@@ -1902,12 +1904,29 @@
     </div>
   </section>
 
+  <!-- ARTICLE READER MODAL -->
+  <div class="article-modal-overlay" id="articleModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
+    <div class="article-modal-card">
+      <div class="article-modal-header">
+        <div class="article-modal-meta">
+          <span id="articleModalCategory">Hardware Architecture</span>
+          <span id="articleModalDate">May 18, 2026</span>
+        </div>
+        <button type="button" class="article-modal-close" id="articleModalClose" aria-label="Close article">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <h3 class="article-modal-title" id="articleModalTitle"></h3>
+      <div class="article-modal-body" id="articleModalBody"></div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="container footer-content">
       <div class="footer-logo">Jubaer <span>Fahad</span></div>
       <p class="footer-motto">"A calm brain can do anything."</p>
-      <p class="footer-copyright">Designed & built by Jubaer Fahad · 2025 · Leave marks everywhere.</p>
+      <p class="footer-copyright">Designed &amp; built by Jubaer Fahad · 2026 · Leave marks everywhere.</p>
     </div>
   </footer>
 

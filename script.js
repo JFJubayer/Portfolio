@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let history = [];
     const maxHistory = 150;
     let activeSim = 'counter';
-    let isSimulating = false;
+    let isSimulating = true;
     let clockTicks = 0;
     
     let counterVal = 0;
@@ -443,6 +443,9 @@ document.addEventListener('DOMContentLoaded', () => {
       wCtx.strokeRect(0, 0, wWidth, wHeight);
     }
     
+    for (let i = 0; i < 80; i++) {
+      simulateTick();
+    }
     setInterval(simulateTick, 60);
     
     function simAnimationLoop() {
@@ -487,10 +490,10 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: 'path_b', x: 65, y: 10, z: 35, label: 'Military Commissions', path: 'military', size: 8 },
       { id: 'bma', x: 110, y: 75, z: 55, label: 'BMA Captain', path: 'military', size: 4 },
       { id: 'jco', x: 90, y: 115, z: 25, label: 'JCO Officer', path: 'military', size: 4 },
-      // Alternative Path (Business)
-      { id: 'path_c', x: 0, y: 25, z: 55, label: 'Business & Consulting', path: 'business', size: 8 },
-      { id: 'fba', x: 25, y: 105, z: 95, label: 'Amazon FBA', path: 'business', size: 4 },
-      { id: 'freelance', x: -30, y: 85, z: 80, label: 'RTL Consulting', path: 'business', size: 4 },
+      // Remote Hardware Consulting Path
+      { id: 'path_c', x: 0, y: 25, z: 55, label: 'FPGA & RTL Consulting', path: 'consulting', size: 8 },
+      { id: 'rtl_verif', x: 25, y: 105, z: 95, label: 'RTL Verification', path: 'consulting', size: 4 },
+      { id: 'freelance', x: -30, y: 85, z: 80, label: 'Embedded Firmware', path: 'consulting', size: 4 },
       // BCS Cadre Path
       { id: 'path_d', x: -45, y: 10, z: 55, label: 'BCS Cadre', path: 'bcs_cadre', size: 8 },
       { id: 'bcs_general', x: -85, y: 65, z: 75, label: 'General Track', path: 'bcs_cadre', size: 4 },
@@ -527,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { from: 'path_a', to: 'australia' },
       { from: 'path_b', to: 'bma' },
       { from: 'path_b', to: 'jco' },
-      { from: 'path_c', to: 'fba' },
+      { from: 'path_c', to: 'rtl_verif' },
       { from: 'path_c', to: 'freelance' },
       { from: 'path_d', to: 'bcs_general' },
       { from: 'path_d', to: 'bcs_tech' },
@@ -685,7 +688,24 @@ document.addEventListener('DOMContentLoaded', () => {
           timeline.classList.add('active');
         }
       });
+
+      // Sync quick-select track buttons
+      const trackBtns = document.querySelectorAll('.roadmap-track-btn');
+      trackBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-path') === pathName);
+      });
     }
+
+    // Bind quick-select track pill clicks
+    const roadmapTrackBtns = document.querySelectorAll('.roadmap-track-btn');
+    roadmapTrackBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selectedPath = btn.getAttribute('data-path');
+        if (selectedPath && selectedPath !== activePath) {
+          triggerPathChange(selectedPath);
+        }
+      });
+    });
 
     // Dynamic 3D Renderer loop
     function renderTree() {
@@ -713,7 +733,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const pathColors = {
         scholarship: '#38bdf8',       // Cyber Blue
         military: '#10b981',          // Emerald Green
-        business: '#fbbf24',          // Amber Gold
+        consulting: '#fbbf24',        // Amber Gold
         bcs_cadre: '#a855f7',         // Royal Purple
         bpsc_non_cadre: '#ec4899',    // Rose Pink
         power_telecom: '#06b6d4',     // Telecom Cyan
@@ -831,7 +851,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvasHades = document.getElementById('project-canvas-hades');
     const canvasRobot = document.getElementById('project-canvas-robot');
     const canvasFace = document.getElementById('project-canvas-face');
-    const canvasTrading = document.getElementById('project-canvas-trading');
     const canvasHealth = document.getElementById('project-canvas-health');
 
     // Hades-V Loop
@@ -874,7 +893,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.fillText(st, x + 14, 80);
 
           const pulseX = x + 14 + Math.sin(tick * 0.04 + idx) * 10;
-          ctx.fillStyle = 'var(--color-bronze)';
+          ctx.fillStyle = '#d97706';
           ctx.beginPath();
           ctx.arc(pulseX, 86, 1.8, 0, Math.PI * 2);
           ctx.fill();
@@ -953,7 +972,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
 
         sensorPoints.forEach((p, idx) => {
-          ctx.fillStyle = idx === 3 ? 'var(--color-bronze)' : 'rgba(255,255,255,0.25)';
+          ctx.fillStyle = idx === 3 ? '#d97706' : 'rgba(255,255,255,0.25)';
           ctx.beginPath();
           ctx.arc(p.x, p.y, idx === 3 ? 3.5 : 2, 0, Math.PI * 2);
           ctx.fill();
@@ -1023,7 +1042,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.lineTo(p.x, p.y);
           ctx.stroke();
           
-          ctx.fillStyle = idx % 3 === 0 ? 'var(--color-bronze)' : 'rgba(255,255,255,0.2)';
+          ctx.fillStyle = idx % 3 === 0 ? '#d97706' : 'rgba(255,255,255,0.2)';
           ctx.beginPath();
           ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
           ctx.fill();
@@ -1045,85 +1064,6 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(drawFace);
       }
       drawFace();
-    }
-
-    // Trading Loop
-    if (canvasTrading) {
-      const ctx = canvasTrading.getContext('2d');
-      let w = canvasTrading.width = canvasTrading.offsetWidth || 300;
-      let h = canvasTrading.height = canvasTrading.offsetHeight || 180;
-      
-      window.addEventListener('resize', () => {
-        if (canvasTrading) {
-          w = canvasTrading.width = canvasTrading.offsetWidth || 300;
-          h = canvasTrading.height = canvasTrading.offsetHeight || 180;
-        }
-      });
-      
-      let tick = 0;
-      let priceHistory = [];
-      for (let i = 0; i < 40; i++) {
-        priceHistory.push(h/2 + (Math.random() - 0.5) * 15);
-      }
-
-      function drawTrading() {
-        if (!canvasTrading.offsetParent) {
-          requestAnimationFrame(drawTrading);
-          return;
-        }
-        ctx.clearRect(0, 0, w, h);
-        tick++;
-
-        if (tick % 6 === 0) {
-          const lastPrice = priceHistory[priceHistory.length - 1];
-          const newPrice = Math.max(30, Math.min(h - 30, lastPrice + (Math.random() - 0.5) * 10));
-          priceHistory.push(newPrice);
-          if (priceHistory.length > 45) priceHistory.shift();
-        }
-
-        ctx.strokeStyle = 'rgba(255,255,255,0.02)';
-        ctx.lineWidth = 0.5;
-        for (let i = 20; i < w; i += 20) {
-          ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke();
-        }
-        for (let i = 20; i < h; i += 20) {
-          ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(w, i); ctx.stroke();
-        }
-
-        ctx.strokeStyle = '#10b981';
-        ctx.lineWidth = 1.6;
-        ctx.beginPath();
-        priceHistory.forEach((p, idx) => {
-          const x = 30 + (idx / priceHistory.length) * (w - 60);
-          if (idx === 0) ctx.moveTo(x, p);
-          else ctx.lineTo(x, p);
-        });
-        ctx.stroke();
-
-        const lastX = 30 + (w - 60);
-        const lastY = priceHistory[priceHistory.length - 1];
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
-        ctx.setLineDash([2, 2]);
-        ctx.beginPath();
-        ctx.moveTo(30, lastY);
-        ctx.lineTo(w - 20, lastY);
-        ctx.stroke();
-        ctx.setLineDash([]);
-
-        ctx.fillStyle = '#10b981';
-        ctx.beginPath();
-        ctx.arc(lastX, lastY, 3.5, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.font = '8px "JetBrains Mono", monospace';
-        ctx.fillStyle = '#10b981';
-        ctx.textAlign = 'left';
-        ctx.fillText("ALGO: ACTIVE", 25, 30);
-        ctx.fillText("GAIN: +3.2%", 25, 40);
-
-        requestAnimationFrame(drawTrading);
-      }
-      drawTrading();
     }
 
     // Health App Loop
@@ -1537,7 +1477,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ----------------------------------------------------
      5. TYPEWRITER EFFECT
      ---------------------------------------------------- */
-  const words = ["FPGA & RTL Engineer", "Embedded Hardware Designer", "ROS 2 Robotics Integrator", "Andes Hackathon 2nd Place", "Amazon FBA Entrepreneur"];
+  const words = ["FPGA & RTL Engineer", "Embedded Hardware Designer", "RISC-V Processor Architect", "ROS 2 Robotics Integrator", "Andes Hackathon 2nd Place"];
   let wordIdx = 0;
   let charIdx = 0;
   let isDeleting = false;
@@ -1633,8 +1573,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
         
-        if (entry.target.id === 'skills' || entry.target.classList.contains('skill-card')) {
+        if (entry.target.id === 'skills' || entry.target.classList.contains('skill-card') || entry.target.classList.contains('skills-cards-column')) {
           animateSkillBars();
+        }
+
+        if (entry.target.classList.contains('trajectory-board')) {
+          const activeRelBar = entry.target.querySelector('.path-detail-pane.active .relevance-bar');
+          if (activeRelBar) {
+            activeRelBar.style.width = activeRelBar.getAttribute('data-relevance') || '85%';
+          }
         }
       }
     });
@@ -1882,6 +1829,113 @@ document.addEventListener('DOMContentLoaded', () => {
           targetPane.classList.add('active');
         }
       });
+    });
+  }
+
+  /* ----------------------------------------------------
+     Technical Journal Article Reader Modal
+     ---------------------------------------------------- */
+  const articlesData = {
+    riscv: {
+      category: 'Hardware Architecture',
+      date: 'May 18, 2026',
+      title: "Why I'm Building a RISC-V CPU from Scratch",
+      body: `
+        <p>Designing the <strong>HaDes-V</strong> pipelined 32-bit RISC-V (RV32I) microcontroller core from scratch in SystemVerilog has been the single deepest learning curve of my undergraduate engineering journey so far.</p>
+        <h4>1. Moving Beyond Black-Box Microcontrollers</h4>
+        <p>Writing C/C++ firmware on STM32 or ESP32 teaches you how peripherals behave from the outside, but designing each pipeline stage—Instruction Fetch (IF), Decode (ID), Execute (EX), Memory (MEM), and Writeback (WB)—forces you to reason about every clock edge, setup/hold budget, and control signal.</p>
+        <h4>2. Resolving Pipeline Hazards</h4>
+        <ul>
+          <li><strong>Data Hazards:</strong> Implemented register-file forwarding paths from EX/MEM and MEM/WB back into the ALU operands, paired with a load-use stall unit.</li>
+          <li><strong>Control Hazards:</strong> Built deterministic branch resolution and pipeline flush logic to prevent speculative state corruption on taken branches and jumps.</li>
+        </ul>
+        <h4>3. Verification with Verilator &amp; GTKWave</h4>
+        <p>Instead of relying solely on slow GUI simulations, I drive the RTL core with cycle-accurate C++ testbenches compiled via <strong>Verilator</strong>, inspecting VCD signal traces in <strong>GTKWave</strong> to verify instruction retirement against the RISC-V ISA reference model.</p>
+      `
+    },
+    andes: {
+      category: 'Hackathon Chronicles',
+      date: 'March 12, 2026',
+      title: 'What I Learned at Andes Hackathon 2025',
+      body: `
+        <p>Winning <strong>2nd Place</strong> at the international Andes Hackathon 2025 showed me how domain-specific hardware acceleration bridges the gap between software bottlenecks and silicon efficiency.</p>
+        <h4>1. Custom Instructions with Andes ACE</h4>
+        <p>Using the Andes Custom Extension (ACE) framework, our team profiled compute-heavy inner loops and identified repetitive bit-manipulation and matrix-accumulation sequences that were consuming dozens of scalar RISC-V cycles.</p>
+        <h4>2. Hardware/Software Co-Design</h4>
+        <ul>
+          <li><strong>RTL Datapath:</strong> Designed custom combinational and multi-cycle execution units mapped directly to new custom opcodes.</li>
+          <li><strong>Toolchain Integration:</strong> Configured compiler intrinsics and assembler mnemonics so C++ application code could invoke our hardware instructions seamlessly without inline assembly clutter.</li>
+        </ul>
+        <h4>3. Key Takeaway</h4>
+        <p>Under tight hackathon deadlines, keeping calm, verifying corner cases early, and measuring cycle counts objectively made all the difference.</p>
+      `
+    },
+    europe: {
+      category: 'Career Strategy',
+      date: 'Jan 5, 2026',
+      title: 'My Plan to Work in Europe as an Engineer',
+      body: `
+        <p>Transitioning from an engineering classroom in Bangladesh to European semiconductor and embedded systems R&amp;D labs requires deliberate multi-year preparation rather than last-minute applications.</p>
+        <h4>1. Proof-of-Work Hardware Portfolio</h4>
+        <p>European hardware research groups and companies value verifiable artifacts: clean SystemVerilog repositories, Verilator test suites, FPGA synthesis reports, and international competition results like the TU Graz HaDes-V Challenge and Andes Hackathon.</p>
+        <h4>2. Target Academic &amp; R&amp;D Ecosystems</h4>
+        <ul>
+          <li><strong>Nordic Research Hubs:</strong> KTH (Sweden), NTNU (Norway), Aalto University (Finland), and DTU (Denmark) for Master's programs in Embedded Systems, SoC, and Computer Architecture.</li>
+          <li><strong>Continental Silicon Clusters:</strong> Germany (Munich, Dresden) and European open-source RISC-V university labs such as TU Graz and ETH Zurich ecosystems.</li>
+        </ul>
+        <h4>3. Next Milestones</h4>
+        <p>Alongside maintaining a strong B.Sc. CGPA at Mymensingh Engineering College, my immediate priorities are completing the HaDes-V processor core, publishing peer-reviewed FPGA/VLSI research, and preparing for IELTS (7.0+).</p>
+      `
+    }
+  };
+
+  const articleModal = document.getElementById('articleModal');
+  const articleModalClose = document.getElementById('articleModalClose');
+  const articleModalCategory = document.getElementById('articleModalCategory');
+  const articleModalDate = document.getElementById('articleModalDate');
+  const articleModalTitle = document.getElementById('articleModalTitle');
+  const articleModalBody = document.getElementById('articleModalBody');
+  const blogReadBtns = document.querySelectorAll('.blog-read-btn');
+
+  function closeArticleModal() {
+    if (!articleModal) return;
+    articleModal.classList.remove('active');
+    articleModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (articleModal && blogReadBtns.length) {
+    blogReadBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-article');
+        const article = articlesData[key];
+        if (!article) return;
+
+        if (articleModalCategory) articleModalCategory.textContent = article.category;
+        if (articleModalDate) articleModalDate.textContent = article.date;
+        if (articleModalTitle) articleModalTitle.textContent = article.title;
+        if (articleModalBody) articleModalBody.innerHTML = article.body;
+
+        articleModal.classList.add('active');
+        articleModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    if (articleModalClose) {
+      articleModalClose.addEventListener('click', closeArticleModal);
+    }
+
+    articleModal.addEventListener('click', (e) => {
+      if (e.target === articleModal) {
+        closeArticleModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && articleModal.classList.contains('active')) {
+        closeArticleModal();
+      }
     });
   }
 
