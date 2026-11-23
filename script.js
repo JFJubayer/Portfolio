@@ -853,6 +853,75 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvasFace = document.getElementById('project-canvas-face');
     const canvasHealth = document.getElementById('project-canvas-health');
 
+    // Hadi-V / Swadheen-SoC block diagram
+    const canvasSoc = document.getElementById('project-canvas-soc');
+    if (canvasSoc) {
+      const ctx = canvasSoc.getContext('2d');
+      let w = canvasSoc.width = canvasSoc.offsetWidth || 300;
+      let h = canvasSoc.height = canvasSoc.offsetHeight || 180;
+
+      window.addEventListener('resize', () => {
+        w = canvasSoc.width = canvasSoc.offsetWidth || 300;
+        h = canvasSoc.height = canvasSoc.offsetHeight || 180;
+      });
+
+      const peripherals = ['UART', 'GPIO', 'SPI', 'I2C'];
+      let tick = 0;
+      function drawSoc() {
+        if (!canvasSoc.offsetParent) {
+          requestAnimationFrame(drawSoc);
+          return;
+        }
+        ctx.clearRect(0, 0, w, h);
+        tick++;
+
+        const busY = h / 2 + 6;
+        const cpuW = 76;
+        const cpuX = w / 2 - cpuW / 2;
+
+        ctx.lineWidth = 1;
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 9px "JetBrains Mono", monospace';
+
+        ctx.strokeStyle = 'rgba(217, 119, 6, 0.6)';
+        ctx.strokeRect(cpuX, 26, cpuW, 30);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
+        ctx.fillText('HADI-V', w / 2, 45);
+
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+        ctx.beginPath();
+        ctx.moveTo(w / 2, 56);
+        ctx.lineTo(w / 2, busY);
+        ctx.moveTo(24, busY);
+        ctx.lineTo(w - 24, busY);
+        ctx.stroke();
+
+        const active = Math.floor(tick / 70) % peripherals.length;
+        peripherals.forEach((name, idx) => {
+          const x = 24 + ((idx + 0.5) / peripherals.length) * (w - 48);
+          ctx.strokeStyle = idx === active ? 'rgba(16, 185, 129, 0.7)' : 'rgba(255, 255, 255, 0.12)';
+          ctx.beginPath();
+          ctx.moveTo(x, busY);
+          ctx.lineTo(x, busY + 18);
+          ctx.stroke();
+          ctx.strokeRect(x - 24, busY + 18, 48, 24);
+          ctx.fillStyle = idx === active ? 'rgba(255, 255, 255, 0.7)' : 'rgba(255, 255, 255, 0.35)';
+          ctx.font = 'bold 8px "JetBrains Mono", monospace';
+          ctx.fillText(name, x, busY + 33);
+        });
+
+        const targetX = 24 + ((active + 0.5) / peripherals.length) * (w - 48);
+        const t = (tick % 70) / 70;
+        ctx.fillStyle = '#d97706';
+        ctx.beginPath();
+        ctx.arc(w / 2 + (targetX - w / 2) * t, busY, 2.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        requestAnimationFrame(drawSoc);
+      }
+      drawSoc();
+    }
+
     // Hades-V Loop
     if (canvasHades) {
       const ctx = canvasHades.getContext('2d');
